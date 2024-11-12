@@ -8,7 +8,6 @@ export default [
   { ignores: ["dist"] },
   {
     files: ["**/*.{js,jsx}"],
-    extends: ["eslint:recommended"],
     languageOptions: {
       ecmaVersion: 2020,
       globals: globals.browser,
