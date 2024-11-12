@@ -4,7 +4,11 @@ export const Layout = () => {
   // TODO: mode 감지해서 변경
   return (
     <>
+      {/* <Header/>
+      <Main> */}
       <Outlet />
+      {/* </Main>
+      <Footer/> */}
     </>
   );
 };

@@ -1,6 +1,6 @@
 import { create } from "zustand";
 
-const useHome = create((set) => ({
+const useHome = create(() => ({
   lorem: "str",
 }));
 

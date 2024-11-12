@@ -1,5 +1,5 @@
 import { create } from "zustand";
 
-const useModal = create((set) => ({}));
+const useModal = create(() => ({}));
 
 export default useModal;
