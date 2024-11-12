@@ -1,4 +1,5 @@
 import { Outlet } from "react-router";
+import Modal from "../components/common/components/Modal";
 
 export const Layout = () => {
   // TODO: mode 감지해서 변경
@@ -9,6 +10,7 @@ export const Layout = () => {
       <Outlet />
       {/* </Main>
       <Footer/> */}
+      <Modal />
     </>
   );
 };
