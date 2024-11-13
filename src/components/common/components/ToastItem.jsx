@@ -3,14 +3,14 @@ import { omitObject } from "../../../lib/util";
 import useToast from "../../../store/toast/useToast";
 
 const ToastItem = ({ toast }) => {
-  const { remove } = useToast();
+  const { removeToast } = useToast();
 
   useEffect(() => {
     let timeout = null;
 
     if (toast.autoClose) {
       timeout = setTimeout(() => {
-        remove(toast.id);
+        removeToast(toast.id);
         if (toast.onClose) toast.onClose();
         clearTimeout(timeout);
       }, toast.duration);
@@ -31,7 +31,7 @@ const ToastItem = ({ toast }) => {
   return (
     <div>
       {toast.showCloseBtn && (
-        <button onClick={() => remove(toast.id)}>close</button>
+        <button onClick={() => removeToast(toast.id)}>close</button>
       )}
       {toast.icon && <div>icon</div>}
       {toast.message}
