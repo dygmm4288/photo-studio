@@ -13,12 +13,12 @@ const createToast = (options = {}) => {
 
   return {
     id: uuid(),
-    message: options.message, //required
+    message: options.message || "",
     type: options.type || ToastType.INFO,
     duration: options.duration || 3000,
     position: options.position || ToastPosition.BOTTOM_CENTER,
     onClose: options.onClose,
-    component: options.component,
+    component: options.component || null,
     autoClose: options.autoClose === undefined ? true : options.autoClose,
     icon: options.icon,
     showCloseBtn:
@@ -54,7 +54,7 @@ const validateOptions = (options) => {
 
   // check required option
 
-  if (!options.message) return false;
+  if (!options.message && !options.component) return false;
 
   if (options.onClose && !options instanceof Function) return false;
 
