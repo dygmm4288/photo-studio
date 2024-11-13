@@ -66,6 +66,7 @@ const useToast = create((set) => ({
     set((state) => ({
       toasts: addToast(state.toasts, options),
     })),
+  clearAll: () => set(() => ({ toasts: [] })),
 }));
 
 export default useToast;
