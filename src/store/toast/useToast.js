@@ -34,7 +34,7 @@ const removeToast = (toasts, targetId) => {
     return toasts;
   }
 
-  return toasts.filter((toastId) => toastId !== targetId);
+  return toasts.filter((toast) => toast.id !== targetId);
 };
 
 const addToast = (toasts, options) => {
