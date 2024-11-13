@@ -1,5 +1,5 @@
 import { create } from "zustand";
-import { uuid } from "../lib/util";
+import { uuid } from "../../lib/util";
 
 const createToast = (options = {}) => {
   const toast = {
