@@ -37,7 +37,7 @@ const removeToast = (toasts, targetId) => {
   return toasts.filter((toast) => toast.id !== targetId);
 };
 
-const addToast = (toasts, options) => {
+const showToast = (toasts, options) => {
   const toast = createToast(options);
   if (toast) return [...toasts, toast];
   return toasts;
@@ -63,13 +63,13 @@ const validateOptions = (options) => {
 
 const useToast = create((set) => ({
   toasts: [], // toast 객체의 배열
-  remove: (targetId) =>
+  removeToast: (targetId) =>
     set((state) => ({
       toasts: removeToast(state.toasts, targetId),
     })),
-  add: (options) =>
+  showToast: (options) =>
     set((state) => ({
-      toasts: addToast(state.toasts, options),
+      toasts: showToast(state.toasts, options),
     })),
   clearAll: () => set(() => ({ toasts: [] })),
 }));
