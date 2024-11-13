@@ -5,13 +5,17 @@ import useToast from "../../../store/toast/useToast";
 const ToastItem = ({ toast }) => {
   const { removeToast } = useToast();
 
+  const handleClose = () => {
+    removeToast(toast.id);
+    if (toast.onClose) toast.onClose();
+  };
+
   useEffect(() => {
     let timeout = null;
 
     if (toast.autoClose) {
       timeout = setTimeout(() => {
-        removeToast(toast.id);
-        if (toast.onClose) toast.onClose();
+        handleClose();
         clearTimeout(timeout);
       }, toast.duration);
     }
@@ -30,9 +34,7 @@ const ToastItem = ({ toast }) => {
 
   return (
     <div>
-      {toast.showCloseBtn && (
-        <button onClick={() => removeToast(toast.id)}>close</button>
-      )}
+      {toast.showCloseBtn && <button onClick={handleClose}>close</button>}
       {toast.icon && <div>icon</div>}
       {toast.message}
     </div>
