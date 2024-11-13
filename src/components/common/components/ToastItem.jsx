@@ -30,7 +30,9 @@ const ToastItem = ({ toast }) => {
 
   return (
     <div>
-      {toast.showCloseBtn && <button>close</button>}
+      {toast.showCloseBtn && (
+        <button onClick={() => remove(toast.id)}>close</button>
+      )}
       {toast.icon && <div>icon</div>}
       {toast.message}
     </div>
