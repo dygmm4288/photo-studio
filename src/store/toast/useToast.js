@@ -4,7 +4,8 @@ import { ToastPosition, ToastType } from "./toast.const";
 const createToast = (options = {}) => {
   if (!validateOptions(options)) {
     console.warn(
-      "[Warn: createToast in useToast]: options가 잘 전달되지 않았습니다.",
+      "[Warn: createToast in useToast]: options의 값을 확인하세요.",
+      options,
     );
     return null;
   }
@@ -52,6 +53,8 @@ const validateOptions = (options) => {
   // check required option
 
   if (!options.message) return false;
+
+  if (options.onClose && !options instanceof Function) return false;
 
   return true;
 };
