@@ -1,16 +1,16 @@
 import { create } from "zustand";
 import { uuid } from "../lib/util";
 
-const createToast = (content, options) => {
+const createToast = (options = {}) => {
   const toast = {
     id: uuid(),
-    content,
   };
+
   if (!validateOptions(options)) {
     console.warn(
       "[Warn: createToast in useToast]: options가 잘 전달되지 않았습니다.",
     );
-    return toast;
+    return null;
   }
 
   return toast;
@@ -27,27 +27,39 @@ const removeToast = (toasts, targetId) => {
   return toasts.filter((toastId) => toastId !== targetId);
 };
 
-const addToast = (toasts, content, options) => {
-  const toast = createToast(content, options);
-  return [...toasts, toast];
+const addToast = (toasts, options) => {
+  const toast = createToast(options);
+  if (toast) return [...toast, toast];
+  return toasts;
 };
 
 const validateOptions = (options) => {
-  return (
-    typeof options === "object" &&
-    !Array.isArray(options) &&
-    !(options instanceof Function)
-  );
+  // check type
+  if (
+    !(
+      typeof options === "object" &&
+      !Array.isArray(options) &&
+      !(options instanceof Function)
+    )
+  )
+    return false;
+
+  // check required option
+
+  if (!options.message) return false;
+
+  return true;
 };
+
 const useToast = create((set) => ({
   toasts: [], // toast 객체의 배열
   remove: (targetId) =>
     set((state) => ({
       toasts: removeToast(state.toasts, targetId),
     })),
-  add: (content = "", options = {}) =>
+  add: (options) =>
     set((state) => ({
-      toasts: addToast(state.toast, content, options),
+      toasts: addToast(state.toasts, options),
     })),
 }));
 
