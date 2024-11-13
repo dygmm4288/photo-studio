@@ -16,9 +16,10 @@ const createToast = (options = {}) => {
     position: options.position || ToastPosition.BOTTOM_CENTER,
     onClose: options.onClose,
     component: options.component,
-    autoClose: options.autoClose || true,
+    autoClose: options.autoClose === undefined ? true : options.autoClose,
     icon: options.icon,
-    showCloseBtn: options.showCloseBtn || false,
+    showCloseBtn:
+      options.showCloseBtn === undefined ? false : options.showCloseBtn,
   };
 };
 
