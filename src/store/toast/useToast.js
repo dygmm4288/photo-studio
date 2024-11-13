@@ -1,4 +1,5 @@
 import { create } from "zustand";
+import { uuid } from "../../lib/util";
 import { ToastPosition, ToastType } from "./toast.const";
 
 const createToast = (options = {}) => {
@@ -11,6 +12,7 @@ const createToast = (options = {}) => {
   }
 
   return {
+    id: uuid(),
     message: options.message, //required
     type: options.type || ToastType.INFO,
     duration: options.duration || 3000,
@@ -25,11 +27,11 @@ const createToast = (options = {}) => {
 };
 
 const removeToast = (toasts, targetId) => {
-  if (!toasts || Array.isArray(toasts)) {
+  if (!toasts || !Array.isArray(toasts)) {
     console.error(
       "[Error: removeToast in useToast]: toasts가 없거나 toasts가 배열이 아닙니다.",
     );
-    return;
+    return toasts;
   }
 
   return toasts.filter((toastId) => toastId !== targetId);
@@ -37,7 +39,7 @@ const removeToast = (toasts, targetId) => {
 
 const addToast = (toasts, options) => {
   const toast = createToast(options);
-  if (toast) return [...toast, toast];
+  if (toast) return [...toasts, toast];
   return toasts;
 };
 
