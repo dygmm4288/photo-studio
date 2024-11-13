@@ -1,11 +1,7 @@
 import { create } from "zustand";
-import { uuid } from "../../lib/util";
+import { ToastPosition, ToastType } from "./toast.const";
 
 const createToast = (options = {}) => {
-  const toast = {
-    id: uuid(),
-  };
-
   if (!validateOptions(options)) {
     console.warn(
       "[Warn: createToast in useToast]: options가 잘 전달되지 않았습니다.",
@@ -13,7 +9,17 @@ const createToast = (options = {}) => {
     return null;
   }
 
-  return toast;
+  return {
+    message: options.message, //required
+    type: options.type || ToastType.INFO,
+    duration: options.duration || 3000,
+    position: options.position || ToastPosition.BOTTOM_CENTER,
+    onClose: options.onClose,
+    component: options.component,
+    autoClose: options.autoClose || true,
+    icon: options.icon,
+    showCloseBtn: options.showCloseBtn || false,
+  };
 };
 
 const removeToast = (toasts, targetId) => {
