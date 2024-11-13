@@ -24,7 +24,7 @@ const ToastItem = ({ toast }) => {
   if (toast.component)
     return (
       <toast.component
-        {...omitObject(toast, ["autoClose", "onClose", "duration"])}
+        {...omitObject(toast, ["id", "autoClose", "onClose", "duration"])}
       />
     );
 
