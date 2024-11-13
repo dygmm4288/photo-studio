@@ -42,11 +42,9 @@ const addToast = (toasts, options) => {
 const validateOptions = (options) => {
   // check type
   if (
-    !(
-      typeof options === "object" &&
-      !Array.isArray(options) &&
-      !(options instanceof Function)
-    )
+    typeof options !== "object" ||
+    Array.isArray(options) ||
+    options instanceof Function
   )
     return false;
 
