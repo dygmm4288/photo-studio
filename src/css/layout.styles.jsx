@@ -13,6 +13,6 @@ export const StColumn = styled(StFlex)`
   flex-direction: column;
 `;
 
-export const StFlexWrap = styled.div`
+export const StFlexWrap = styled(StFlex)`
   flex-wrap: wrap;
 `;
