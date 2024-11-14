@@ -3,7 +3,7 @@ import Modal from "../components/common/components/Modal";
 import ToastContainer from "../components/common/components/ToastContainer";
 import { useLayoutModeEffect } from "../store/useMode";
 
-export const Layout = () => {
+const Layout = () => {
   useLayoutModeEffect();
 
   return (
@@ -18,3 +18,5 @@ export const Layout = () => {
     </>
   );
 };
+
+export default Layout;
