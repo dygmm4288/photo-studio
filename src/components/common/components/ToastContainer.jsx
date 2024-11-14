@@ -1,4 +1,4 @@
-import useToast from "../../../store/useToast";
+import useToast from "../../../store/toast/useToast";
 import ToastItem from "./ToastItem";
 
 const ToastContainer = () => {
