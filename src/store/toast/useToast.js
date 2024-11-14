@@ -56,7 +56,7 @@ const validateOptions = (options) => {
 
   if (!options.message && !options.component) return false;
 
-  if (options.onClose && !options instanceof Function) return false;
+  if (options.onClose && !(options instanceof Function)) return false;
 
   return true;
 };
