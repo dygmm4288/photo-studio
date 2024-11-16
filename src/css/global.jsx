@@ -18,10 +18,8 @@ const GlobalStyle = createGlobalStyle`
   figure, figcaption, footer, header, hgroup, 
   menu, nav, output, ruby, section, summary,
   time, mark, audio, video {
-    margin: 0;
-    padding: 0;
     border: 0;
-    font-size: 100%;
+    font-size: 62.5%;
     font: inherit;
     vertical-align: baseline;
   }
@@ -54,12 +52,14 @@ const GlobalStyle = createGlobalStyle`
     box-sizing: border-box;
   }
 
-  html {
-    font-size: 62.5%;
-  }
-
   body {
     font-family: "Helvetica", "Arial", sans-serif;
+  }
+
+  * {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
   }
 `;
 
