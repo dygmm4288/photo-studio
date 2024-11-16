@@ -1,21 +1,14 @@
+import React from "react";
 import ServiceInfo from "../components/serviceSection/ServiceInfo";
 import * as St from "../styles/HomeStyle";
 import SecondItemBg from "/assets/ServiceSecond.jpg";
 import ThirdItemBg from "/assets/ServiceThird.jpg";
 import FourthItemBg from "/assets/ServiceFourth.jpg";
 import ServiceFirstItem from "../components/serviceSection/ServiceFirstItem";
-import { useInView } from "react-intersection-observer";
-import React, { useEffect, useState } from "react";
+import useHome from "../hooks/useHome";
 
 export default function ServiceSection() {
-  const { ref: animationTriggerPoint, inView } = useInView({ threshold: 0.1 });
-  const [animationState, setAnimationState] = useState(false);
-
-  useEffect(() => {
-    if (inView) {
-      setAnimationState(true);
-    }
-  }, [inView]);
+  const { animationState, animationTriggerPoint } = useHome();
 
   return (
     <React.Fragment>

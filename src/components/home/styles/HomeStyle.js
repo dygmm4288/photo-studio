@@ -1,5 +1,13 @@
 import styled, { keyframes } from "styled-components";
 
+export const HomeWrapper = styled.div`
+  width: 100%;
+  max-width: 144rem;
+  display: flex;
+  flex-direction: column;
+  gap: 8rem;
+`;
+
 export const MainSection = styled.div`
   width: 100%;
   min-height: calc(100vh - 10vh);

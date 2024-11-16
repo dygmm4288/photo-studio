@@ -1,20 +1,12 @@
-import styled from "styled-components";
 import MainSection from "./MainSection";
 import ServiceSection from "./ServiceSection";
-
-const HomeWrapper = styled.div`
-  width: 100%;
-  max-width: 144rem;
-  display: flex;
-  flex-direction: column;
-  gap: 8rem;
-`;
+import * as St from "../../home/styles/HomeStyle";
 
 export default function Home() {
   return (
-    <HomeWrapper>
+    <St.HomeWrapper>
       <MainSection />
       <ServiceSection />
-    </HomeWrapper>
+    </St.HomeWrapper>
   );
 }
