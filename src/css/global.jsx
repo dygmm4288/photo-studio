@@ -20,7 +20,6 @@ const GlobalStyle = createGlobalStyle`
   time, mark, audio, video {
     border: 0;
     font-size: 62.5%;
-    font: inherit;
     vertical-align: baseline;
   }
 

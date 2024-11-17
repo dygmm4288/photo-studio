@@ -1,14 +1,21 @@
 import styled from "styled-components";
-import { StFlex } from "../../../css/layout.styles";
+import { flex, rowBox } from "../../../css/layout.styles";
 
-export const StHeaderWrapper = styled(StFlex)`
+export const HeaderWrapper = styled.section`
+  ${flex}
   justify-content: space-between;
+  position: fixed;
+  left: 0;
+  right: 0;
+  top: 3rem;
 `;
 
-export const StNavWrapper = styled.nav``;
+export const HeaderLogo = styled.h1``;
+export const NavWrapper = styled.nav``;
 
-export const StNavList = styled(StFlex)`
+export const NavList = styled.nav`
+  ${rowBox}
   gap: 6.9rem;
 `;
 
-export const StNavItem = styled.li``;
+export const NavItem = styled.li``;

@@ -1,12 +1,6 @@
 import { Link } from "react-router-dom";
 import Button from "../../components/common/components/Button";
-import {
-  StHeaderWrapper,
-  StNavItem,
-  StNavList,
-  StNavWrapper,
-} from "../../components/layout/styles/header.styles";
-import { StHeading3, StHeading3Bold } from "../../css/fonts.styles";
+import * as St from "../../components/layout/styles/header.styles";
 
 const navMenus = [
   {
@@ -25,21 +19,21 @@ const navMenus = [
 
 const Header = () => {
   return (
-    <StHeaderWrapper>
-      <StHeading3Bold>포레스트 픽쳐스</StHeading3Bold>
-      <StNavWrapper>
-        <StNavList as={"ul"}>
+    <St.HeaderWrapper>
+      <St.HeaderLogo>포레스트 픽쳐스</St.HeaderLogo>
+      <St.NavWrapper>
+        <St.NavList as={"ul"}>
           {navMenus.map((menu) => (
-            <StNavItem key={`menu${menu.name}`}>
+            <St.NavItem key={`menu${menu.name}`}>
               <Link href={menu.href}>
-                <StHeading3>{menu.name}</StHeading3>
+                <div>{menu.name}</div>
               </Link>
-            </StNavItem>
+            </St.NavItem>
           ))}
           <Button>문의하기</Button>
-        </StNavList>
-      </StNavWrapper>
-    </StHeaderWrapper>
+        </St.NavList>
+      </St.NavWrapper>
+    </St.HeaderWrapper>
   );
 };
 
