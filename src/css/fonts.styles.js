@@ -22,27 +22,27 @@ export const heading1 = css`
 `;
 
 export const heading2 = css`
-  font-weight: ${(props) => (props.$bold ? "700" : "400")};
+  font-weight: ${(props) => (props.bold ? "700" : "400")};
   font-size: 24px;
   line-height: 32px;
   letter-spacing: -0.25px;
 `;
 
 export const heading3 = css`
-  font-weight: ${(props) => (props.$bold ? "700" : "500")};
+  font-weight: ${(props) => (props.bold ? "700" : "500")};
   font-size: 24px;
   line-height: 32px;
   letter-spacing: -0.25px;
 `;
 
 export const body1 = css`
-  font-weight: ${(props) => (props.$bold ? "700" : "500")};
+  font-weight: ${(props) => (props.bold ? "700" : "500")};
   font-size: 16px;
   line-height: 24px;
 `;
 
 export const body2 = css`
-  font-weight: ${(props) => (props.$bold ? "700" : "500")};
+  font-weight: ${(props) => (props.bold ? "700" : "500")};
   font-size: 14px;
   line-height: 20px;
 `;
