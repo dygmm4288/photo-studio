@@ -1,7 +1,5 @@
-import StHome from "./styles/HomeStyle";
+import Home from "./views/Home";
 
-const Home = () => {
-  return <StHome />;
-};
-
-export default Home;
+export default function index() {
+  return <Home />;
+}
