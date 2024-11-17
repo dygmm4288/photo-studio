@@ -3,9 +3,7 @@ import { columnBox } from "../../../css/layout.styles";
 
 export const HomeWrapper = styled.div`
   width: 100%;
-  max-width: 144rem;
   ${columnBox({ gap: 8 })}
-  margin: 0 auto;
 `;
 
 export const MainSection = styled.div`
@@ -79,7 +77,7 @@ export const FadeIn = keyframes`
 export const ServiceSectionWrapper = styled.div`
   width: 100%;
   min-height: calc(100vh - 40vh);
-  max-width: 1440px;
+  max-width: 144rem;
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   grid-gap: 2rem;
