@@ -17,7 +17,7 @@ export default function ServiceSection() {
         <ServiceFirstItem
           titleSub={"Our Services"}
           title={"포레스트 픽쳐스의 서비스"}
-          description={`제주만의 감성으로 가득한다양한 스냅 촬영 서비스를\n제공 해드립니다. 가족, 연인, 그리고 소중한 친구들과 함께하는 제주 에서의 특별한 순간을 기록해보세요.`}
+          description={`제주만의 감성으로 가득한 다양한 스냅 촬영 서비스\n를 제공 해드립니다. 가족, 연인, 그리고 소중한 친구들과 함께하는 제주에서의 특별한 순간을 기록해보세요.`}
           buttonText={"상세보기"}
           runAnimation={animationState}
         />

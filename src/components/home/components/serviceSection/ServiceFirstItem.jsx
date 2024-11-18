@@ -12,7 +12,6 @@ export default function ServiceFirstItem({
       <St.TypoSub>{titleSub}</St.TypoSub>
       <St.ColumnBox gap={5}>
         <St.InfoTitle>{title}</St.InfoTitle>
-
         <St.ServiceDescription>{description}</St.ServiceDescription>
         {buttonText && <St.InfoButton>{buttonText}</St.InfoButton>}
       </St.ColumnBox>
