@@ -1,4 +1,5 @@
 import styled, { keyframes } from "styled-components";
+import { heading2 } from "../../../css/fonts.styles";
 import { columnBox } from "../../../css/layout.styles";
 
 export const HomeWrapper = styled.div`
@@ -51,13 +52,9 @@ export const TitleText = styled.span`
 `;
 
 export const SubText = styled.span`
-  white-space: pre-wrap;
-  line-height: 39px;
-  letter-spacing: -0.25px;
   text-align: center;
-  font-weight: 400;
-  font-size: 1.2rem;
   color: #fff;
+  ${heading2()}
 `;
 
 export const FadeIn = keyframes`
