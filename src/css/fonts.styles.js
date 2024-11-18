@@ -24,7 +24,7 @@ export const heading1 = () => css`
   white-space: pre-wrap;
 `;
 
-export const heading2 = ({ bold = false }) => css`
+export const heading2 = ({ bold = false } = {}) => css`
   font-weight: ${bold ? 700 : 400};
   font-size: 2.4rem;
   line-height: 3.2rem;
@@ -32,7 +32,7 @@ export const heading2 = ({ bold = false }) => css`
   white-space: pre-wrap;
 `;
 
-export const heading3 = ({ bold = false }) => css`
+export const heading3 = ({ bold = false } = {}) => css`
   font-weight: ${bold ? 700 : 500};
   font-size: 2.4rem;
   line-height: 3.2rem;
@@ -40,14 +40,14 @@ export const heading3 = ({ bold = false }) => css`
   white-space: pre-wrap;
 `;
 
-export const body1 = ({ bold = false }) => css`
+export const body1 = ({ bold = false } = {}) => css`
   font-weight: ${bold ? 700 : 500};
   font-size: 1.6rem;
   line-height: 2.4rem;
   white-space: pre-wrap;
 `;
 
-export const body2 = ({ bold = false }) => css`
+export const body2 = ({ bold = false } = {}) => css`
   font-weight: ${bold ? 700 : 500};
   font-size: 1.4rem;
   line-height: 2rem;
