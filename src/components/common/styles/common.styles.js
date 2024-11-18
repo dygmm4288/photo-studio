@@ -3,6 +3,7 @@ import {
   bgDisabled,
   bgPrimary,
   bgTertiary,
+  bgWhite,
   body1,
   label1,
   textBlack,
@@ -67,4 +68,41 @@ export const InputLine = styled.div`
 export const InputLabel = styled.label`
   ${textPrimary()}
   ${body1({ bold: true })}
+`;
+
+export const ButtonCheckboxWrapper = styled.div`
+  ${(props) =>
+    props.selected &&
+    css`
+      ${textWhite()}
+      ${bgPrimary()}
+    `}
+  ${(props) =>
+    !props.selected &&
+    css`
+      ${bgWhite()}
+      ${textPrimary()}
+    `}
+    ${(props) =>
+    props.disabled &&
+    css`
+      border-color: #bdbdbd;
+      ${bgDisabled()}
+      ${textDisabled()}
+    `}
+    border-radius: 0.5rem;
+  border: 1px solid #336155;
+  width: 11rem;
+`;
+export const ButtonCheckbox = styled.input`
+  display: none;
+`;
+
+export const ButtonCheckboxLabel = styled.label`
+  display: block;
+  width: 100%;
+  height: 100%;
+  padding: 1.45rem 2.35rem;
+  text-align: center;
+  ${label1()}
 `;
