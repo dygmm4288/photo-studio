@@ -25,9 +25,7 @@ const Header = () => {
         <St.NavList as={"ul"}>
           {navMenus.map((menu) => (
             <St.NavItem key={`menu${menu.name}`}>
-              <Link href={menu.href}>
-                <div>{menu.name}</div>
-              </Link>
+              <Link href={menu.href}>{menu.name}</Link>
             </St.NavItem>
           ))}
           <Button>문의하기</Button>
