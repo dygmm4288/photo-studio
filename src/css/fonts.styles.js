@@ -98,6 +98,9 @@ export const textClosed = () => css`
   color: #e46962;
 `;
 
+export const bgPrimary = () => css`
+  background-color: #336155;
+`;
 export const bgDisabled = () => css`
   background-color: #eee;
 `;
@@ -113,7 +116,6 @@ export const bgWhite = () => css`
 export const bgTertiary = () => css`
   background-color: #f7f1ed;
 `;
-
 export const bgBlack = () => css`
   background-color: #282828;
 `;

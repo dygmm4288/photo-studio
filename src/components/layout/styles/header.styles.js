@@ -4,6 +4,7 @@ import { flex, rowBox } from "../../../css/layout.styles";
 
 export const HeaderWrapper = styled.header`
   ${flex}
+  z-index: 1;
   justify-content: space-between;
   position: fixed;
   left: 0;
