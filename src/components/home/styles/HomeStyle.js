@@ -98,6 +98,7 @@ export const GridItemWrapper = styled.div`
   width: 100%;
   max-width: 560px;
   min-height: 400px;
+  margin: 0 auto;
   display: flex;
   flex-direction: column;
   position: relative;
@@ -119,7 +120,17 @@ export const GridItemWrapperBG = styled.div`
   background-position:center;
   background-repeat:no-repeat;
   background-size:cover;
-  filter: brightness(88%);
+
+  &::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.4));
+    z-index: 1; 
+  }
 `
 
 export const TypoSub = styled.span`
