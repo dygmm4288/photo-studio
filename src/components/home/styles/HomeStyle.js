@@ -168,35 +168,35 @@ export const TypoBox = styled.div`
 
 export const InfoNumber = styled.span`
   color: white;
-  font-size: 32px;
+  font-size: 3.2rem;
   font-weight: 700;
   position: relative;
 
   &::before {
     content: "";
-    width: 24px;
+    width: 2.4rem;
     height: 2px;
     background-color: #fff;
     position: absolute;
     left: 0;
-    bottom: -12px;
+    bottom: -11px;
   }
 `;
 
 export const ServiceDescription = styled.span`
-  font-size: 24px;
+  font-size: 2.4rem;
   font-weight: 400;
   letter-spacing: -0.25px;
-  line-height: 39px;
+  line-height: 3.9rem;
   white-space: pre-wrap;
 `;
 
 export const ServiceTypo = styled.span`
   color: white;
-  font-size: 32px;
+  font-size: 3.2rem;
   font-weight: 700;
   white-space: pre-wrap;
-  line-height: 40px;
+  line-height: 4rem;
 `;
 
 export const InfoButton = styled.button`
