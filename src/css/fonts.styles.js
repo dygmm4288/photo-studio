@@ -69,3 +69,44 @@ export const caption1 = () => css`
   letter-spacing: 0.025rem;
   white-space: pre-wrap;
 `;
+
+export const textPrimary = () => css`
+  color: #336155;
+`;
+export const textSecondary = () => css`
+  color: #4daabc;
+`;
+export const textTertiary = () => css`
+  color: #f7f1ed;
+`;
+export const textAccent = () => css`
+  color: #ff9100;
+`;
+export const textWhite = () => css`
+  color: #fff;
+`;
+export const textGray = () => css`
+  color: #757575;
+`;
+export const textBlack = () => css`
+  color: #282828;
+`;
+export const textDisabled = () => css`
+  color: #bdbdbd;
+`;
+export const textClosed = () => css`
+  color: #e46962;
+`;
+
+export const bgDisabled = () => css`
+  background-color: #eee;
+`;
+export const bgAvailable = () => css`
+  background-color: #e0ffd9;
+`;
+export const bgClosed = () => css`
+  background-color: #ffd9d9;
+`;
+export const bgWhite = () => css`
+  background-color: #fff;
+`;
