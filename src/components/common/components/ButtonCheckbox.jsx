@@ -12,8 +12,9 @@ const ButtonCheckbox = ({
   const defaultId = useId();
 
   const handleChange = (e) => {
+    if (disabled) return;
     setSelected(e.target.checked);
-    if (onChange && !disabled) onChange(e);
+    if (onChange) onChange(e);
   };
 
   return (
