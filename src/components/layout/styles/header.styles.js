@@ -2,7 +2,7 @@ import styled from "styled-components";
 import { heading2, heading3, textWhite } from "../../../css/fonts.styles";
 import { flex, rowBox } from "../../../css/layout.styles";
 
-export const HeaderWrapper = styled.section`
+export const HeaderWrapper = styled.header`
   ${flex}
   justify-content: space-between;
   position: fixed;
