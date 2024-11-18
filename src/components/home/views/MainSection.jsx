@@ -1,8 +1,10 @@
-import MainImage from "/assets/Main.jpg";
 import Typo from "/assets/Main_Typo.png";
 import * as St from "../styles/HomeStyle";
+import useMainBg from "../hooks/useMainBg";
 
 export default function MainSection() {
+  const { mainImage, fadeOut } = useMainBg();
+
   return (
     <St.MainSection>
       <St.ColumnBox gap={6}>
@@ -14,7 +16,7 @@ export default function MainSection() {
           </St.SubText>
         </St.ColumnBox>
       </St.ColumnBox>
-      <St.MainBG $imageSrc={MainImage}></St.MainBG>
+      <St.MainBG $imageSrc={mainImage[0]} $fadeOut={fadeOut}></St.MainBG>
     </St.MainSection>
   );
 }

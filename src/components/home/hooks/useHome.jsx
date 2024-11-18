@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { useInView } from "react-intersection-observer";
 
 export default function useHome() {
-  const { ref: animationTriggerPoint, inView } = useInView({ threshold: 0.1 });
+  const { ref: animationTriggerPoint, inView } = useInView({ threshold: 0.6 });
   const [animationState, setAnimationState] = useState(false);
 
   useEffect(() => {
