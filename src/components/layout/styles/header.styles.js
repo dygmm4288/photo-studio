@@ -16,6 +16,9 @@ export const HeaderWrapper = styled.header`
 `;
 
 export const HeaderLogo = styled.h1`
+  ${flex()}
+  justify-content: center;
+  align-items: center;
   ${heading2({ bold: true })}
   ${textWhite()}
 `;
