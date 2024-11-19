@@ -119,3 +119,6 @@ export const bgTertiary = () => css`
 export const bgBlack = () => css`
   background-color: #282828;
 `;
+export const bgAccent = () => css`
+  background-color: #ff9100;
+`;

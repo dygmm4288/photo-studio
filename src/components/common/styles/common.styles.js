@@ -1,5 +1,6 @@
 import styled, { css } from "styled-components";
 import {
+  bgAccent,
   bgDisabled,
   bgPrimary,
   bgTertiary,
@@ -11,7 +12,7 @@ import {
   textPrimary,
   textWhite,
 } from "../../../css/fonts.styles";
-import { rowBox } from "../../../css/layout.styles";
+import { flex, rowBox } from "../../../css/layout.styles";
 
 const primary = css`
   ${textWhite()}
@@ -105,4 +106,38 @@ export const ButtonCheckboxLabel = styled.label`
   padding: 1.45rem 2.35rem;
   text-align: center;
   ${label1()}
+`;
+
+export const FloatingButtonWrapper = styled.button`
+  ${bgAccent()}
+  ${textWhite()}
+  border-radius: 1rem;
+  outline: none;
+  border: none;
+
+  width: 11.4rem;
+  height: 6rem;
+  padding: 1.8rem 1.6rem;
+
+  position: fixed;
+  bottom: 3rem;
+  right: 6.6rem;
+  z-index: 1;
+  cursor: pointer;
+
+  ${flex()}
+  justify-content: center;
+  align-items: center;
+
+  box-shadow: 0 0.4rem 0.6rem rgba(76, 76, 76, 0.48);
+
+  @media screen and (max-width: 767px) {
+    border-radius: 99999rem;
+    width: 6rem;
+  }
+`;
+
+export const FloatingText = styled.span`
+  ${label1()}
+  ${textWhite()}
 `;
