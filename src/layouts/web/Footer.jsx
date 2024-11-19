@@ -30,21 +30,36 @@ const footerInfos = [
     content: "forest_pictures_jeju@forestpictures.com",
   },
 ];
+const footerSNS = [
+  {
+    name: "인스타",
+    icon: InstaIcon,
+    href: "https://www.instagram.com",
+  },
+  {
+    name: "페이스북",
+    icon: FaceBookIcon,
+    href: "https://www.facebook.com",
+  },
+  {
+    name: "네이버",
+    icon: NaverIcon,
+    href: "https://naver.com",
+  },
+];
 const Footer = () => {
   return (
     <St.Footer>
       <St.HeadWrapper>
         <St.Head>포레스트 픽처스</St.Head>
         <St.FooterIconContainer>
-          <St.FooterIcon>
-            <InstaIcon>인스타</InstaIcon>
-          </St.FooterIcon>
-          <St.FooterIcon>
-            <FaceBookIcon>페이스북</FaceBookIcon>
-          </St.FooterIcon>
-          <St.FooterIcon>
-            <NaverIcon>네이버</NaverIcon>
-          </St.FooterIcon>
+          {footerSNS.map((sns) => (
+            <St.FooterIcon key={sns.href}>
+              <a href={sns.href}>
+                <sns.icon>{sns.name}</sns.icon>
+              </a>
+            </St.FooterIcon>
+          ))}
         </St.FooterIconContainer>
       </St.HeadWrapper>
       <St.Line />
