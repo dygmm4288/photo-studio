@@ -1,4 +1,5 @@
 import * as St from "../../styles/BookingStyles";
+import { IoIosCheckmark } from "react-icons/io";
 
 const importantNotes = [
   {
@@ -40,10 +41,13 @@ const importantNotes = [
 export default function ImportantNotes() {
   return (
     <St.ImportantNoteContainer>
-      <St.FormTitle>예약 전 필수 사항</St.FormTitle>
+      <St.NoteTitle>예약 전 필수 사항</St.NoteTitle>
       {importantNotes.map((noteData) => (
         <div key={noteData.title}>
-          <St.FormSubTitle>{noteData.title}</St.FormSubTitle>
+          <St.NoteSubTitleWrapper>
+            <IoIosCheckmark fontSize={24} />
+            <St.NoteSubTitle>{noteData.title}</St.NoteSubTitle>
+          </St.NoteSubTitleWrapper>
           <ul>
             {noteData.notes.map((note) => (
               <St.NotesList key={note}>{note}</St.NotesList>
