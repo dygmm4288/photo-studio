@@ -47,12 +47,19 @@ const GlobalStyle = createGlobalStyle`
     border-spacing: 0;
   }
 
+  @font-face {
+    font-family: 'Pretendard-Regular';
+    src: url('https://fastly.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Regular.woff') format('woff');
+    font-weight: 400;
+    font-style: normal;
+  }
+
   *, *::before, *::after {
     box-sizing: border-box;
   }
 
   body {
-    font-family: "Helvetica", "Arial", sans-serif;
+    font-family: 'Pretendard-Regular';
   }
 
   a {
