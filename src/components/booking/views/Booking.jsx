@@ -4,12 +4,12 @@ import BookingCalendar from "../components/calendarSection/BookingCalendar";
 import BookingForm from "./BookingForm";
 export default function Booking() {
   return (
-    <div>
+    <St.BookingContainer>
       <St.BookingWrapper>
         <BookingCalendar />
         <BookingForm />
       </St.BookingWrapper>
       <BookingConfirmationBar />
-    </div>
+    </St.BookingContainer>
   );
 }

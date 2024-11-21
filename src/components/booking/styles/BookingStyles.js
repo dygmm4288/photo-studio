@@ -2,11 +2,16 @@ import styled from "styled-components";
 import { body2, heading3, label1, textAccent } from "../../../css/fonts.styles";
 import { columnBox } from "../../../css/layout.styles";
 
-export const BookingWrapper = styled.div`
+export const BookingContainer = styled.div`
+  margin-top: 10rem; // 헤더와의 간격
   display: flex;
+  flex-direction: column;
+  align-items: center;
   justify-content: center;
-  width: 100%;
-  margin-top: 10rem;
+`;
+
+export const BookingWrapper = styled.div`
+  ${columnBox({ gap: 5 })}
 `;
 
 // 예약 캘린더 //
@@ -52,9 +57,12 @@ export const BookingConfirmationBarContainer = styled.div`
   height: 9rem;
   position: sticky;
   bottom: 0;
+  left: 0;
+  width: 100vw;
   display: flex;
   justify-content: center;
   align-items: center;
+  z-index: 1;
 `;
 
 export const BookingInfoWrapper = styled.div`
