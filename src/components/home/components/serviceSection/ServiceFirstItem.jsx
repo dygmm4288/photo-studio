@@ -8,7 +8,7 @@ export default function ServiceFirstItem({
   runAnimation = false,
 }) {
   return (
-    <St.GridItemWrapper startAnimation={runAnimation}>
+    <St.GridItemWrapper $startAnimation={runAnimation}>
       <St.TypoSub>{titleSub}</St.TypoSub>
       <St.ColumnBox gap={5}>
         <St.InfoTitle>{title}</St.InfoTitle>

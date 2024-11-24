@@ -16,7 +16,9 @@ export default function MainSection() {
           </St.SubText>
         </St.ColumnBox>
       </St.ColumnBox>
-      <St.MainBG $imageSrc={mainImage[0]} $fadeOut={fadeOut}></St.MainBG>
+      <St.MainBG
+        $imageSrc={mainImage && mainImage}
+        $fadeOut={fadeOut}></St.MainBG>
     </St.MainSection>
   );
 }

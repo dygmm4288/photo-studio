@@ -27,8 +27,8 @@ export default function ServiceSection() {
           infoText={`자연광으로\n촬영하는\n제주 감성 스냅샷`}
           runAnimation={animationState}
         />
-        <span style={{ height: "1px" }} ref={animationTriggerPoint}></span>
-        <span style={{ height: "1px" }}></span>
+        <span style={{ height: "0.1rem" }} ref={animationTriggerPoint}></span>
+        <span style={{ height: "0.1rem" }}></span>
         <ServiceInfo
           bg={ThirdItemBg}
           infoNumber={2}
