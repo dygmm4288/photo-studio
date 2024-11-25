@@ -35,8 +35,6 @@ class Loader {
     if (!window.kakao)
       throw new Error("카카오 API가 성공적으로 로딩되지 않았습니다.");
 
-    console.log("here");
-
     if (!window.kakao.maps.Map) {
       window.kakao.maps.load(() => {
         run(this.callbacks.get("onload"));
