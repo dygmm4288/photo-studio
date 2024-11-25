@@ -1,10 +1,10 @@
-import FaceBookIcon from "../../assets/icons/FaceBookIcon";
-import InstaIcon from "../../assets/icons/InstaIcon";
-import LocationIcon from "../../assets/icons/LocationIcon";
-import MailIcon from "../../assets/icons/MailIcon";
-import NaverIcon from "../../assets/icons/NaverIcon";
-import TelIcon from "../../assets/icons/TelIcon";
-import TimeIcon from "../../assets/icons/TimeIcon";
+import FaceBookIcon from "../../../assets/icons/FaceBookIcon";
+import InstaIcon from "../../../assets/icons/InstaIcon";
+import LocationIcon from "../../../assets/icons/LocationIcon";
+import MailIcon from "../../../assets/icons/MailIcon";
+import NaverIcon from "../../../assets/icons/NaverIcon";
+import TelIcon from "../../../assets/icons/TelIcon";
+import TimeIcon from "../../../assets/icons/TimeIcon";
 
 export const footerInfos = [
   {

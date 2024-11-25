@@ -2,16 +2,20 @@ import styled from "styled-components";
 import { heading2, heading3, textWhite } from "../../../css/fonts.styles";
 import { flex, rowBox } from "../../../css/layout.styles";
 
-export const HeaderWrapper = styled.header`
-  ${flex}
+export const Header = styled.header`
   z-index: 1;
-  justify-content: space-between;
   position: fixed;
   left: 0;
   right: 0;
-  top: 3rem;
-  max-width: 144rem;
+  padding: 3rem 0;
   width: 100vw;
+  backdrop-filter: blur(10px);
+`;
+
+export const HeaderWrapper = styled.div`
+  ${flex()}
+  justify-content: space-between;
+  max-width: 144rem;
   margin: 0 auto;
 `;
 
