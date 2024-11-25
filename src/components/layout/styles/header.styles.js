@@ -50,4 +50,6 @@ export const NavItem = styled.li`
   ${flex()};
   justify-content: center;
   align-items: center;
+
+  ${(props) => props.isActivate && `background-color: red;`};
 `;

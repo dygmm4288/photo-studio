@@ -5,6 +5,7 @@ import ToastContainer from "../components/common/components/ToastContainer";
 import { useLayoutModeEffect } from "../store/useMode";
 import Footer from "./web/Footer";
 import Header from "./web/Header";
+import Main from "./web/Main";
 
 const Layout = () => {
   useLayoutModeEffect();
@@ -12,9 +13,9 @@ const Layout = () => {
   return (
     <>
       <Header />
-      {/*<Main> */}
-      <Outlet />
-      {/* {/* </Main> */}
+      <Main>
+        <Outlet />
+      </Main>
       <FloatingButton />
       <Footer />
       <Modal />
