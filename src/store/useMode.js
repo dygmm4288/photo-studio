@@ -4,8 +4,8 @@ import { create } from "zustand";
 const detectMode = () => {
   const width = window.innerWidth;
 
-  if (width <= 768) return "mobile";
-  if (width <= 1024) return "tablet";
+  if (width < 768) return "mobile";
+  if (width < 1024) return "tablet";
   return "web";
 };
 

@@ -1,7 +1,9 @@
 import { Outlet } from "react-router";
+import FloatingButton from "../components/common/components/FloatingButton";
 import Modal from "../components/common/components/Modal";
 import ToastContainer from "../components/common/components/ToastContainer";
 import { useLayoutModeEffect } from "../store/useMode";
+import Footer from "./web/Footer";
 import Header from "./web/Header";
 
 const Layout = () => {
@@ -12,8 +14,9 @@ const Layout = () => {
       <Header />
       {/*<Main> */}
       <Outlet />
-      {/* </Main>
-      <Footer/> */}
+      {/* {/* </Main> */}
+      <FloatingButton />
+      <Footer />
       <Modal />
       <ToastContainer />
     </>

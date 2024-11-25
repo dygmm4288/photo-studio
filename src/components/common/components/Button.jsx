@@ -1,9 +1,11 @@
-import styled from "styled-components";
+import * as St from "../styles/common.styles";
 
-const Button = ({ children, ...props }) => {
-  return <StButton {...props}>{children}</StButton>;
+const Button = ({ theme = "primary", children, ...props }) => {
+  return (
+    <St.Button theme={theme} {...props}>
+      {children}
+    </St.Button>
+  );
 };
-
-const StButton = styled.button``;
 
 export default Button;

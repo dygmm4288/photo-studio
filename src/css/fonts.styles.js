@@ -34,8 +34,8 @@ export const heading2 = ({ bold = false } = {}) => css`
 
 export const heading3 = ({ bold = false } = {}) => css`
   font-weight: ${bold ? 700 : 500};
-  font-size: 2.4rem;
-  line-height: 3.2rem;
+  font-size: 1.8rem;
+  line-height: 2.8rem;
   letter-spacing: -0.025rem;
   white-space: pre-wrap;
 `;
@@ -98,6 +98,9 @@ export const textClosed = () => css`
   color: #e46962;
 `;
 
+export const bgPrimary = () => css`
+  background-color: #336155;
+`;
 export const bgDisabled = () => css`
   background-color: #eee;
 `;
@@ -109,4 +112,13 @@ export const bgClosed = () => css`
 `;
 export const bgWhite = () => css`
   background-color: #fff;
+`;
+export const bgTertiary = () => css`
+  background-color: #f7f1ed;
+`;
+export const bgBlack = () => css`
+  background-color: #282828;
+`;
+export const bgAccent = () => css`
+  background-color: #ff9100;
 `;
