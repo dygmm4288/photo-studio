@@ -10,7 +10,7 @@ export default function ServiceInfo({
   runAnimation = false,
 }) {
   return (
-    <St.GridItemWrapper startAnimation={runAnimation}>
+    <St.GridItemWrapper $startAnimation={runAnimation}>
       <St.TypoSub>{titleSub}</St.TypoSub>
       <St.InfoTitle>{title}</St.InfoTitle>
       <St.TypoBox>

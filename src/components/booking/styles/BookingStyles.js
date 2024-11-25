@@ -18,7 +18,7 @@ export const BookingWrapper = styled.div`
 
 // 예약 전 필수 사항 //
 export const ImportantNoteContainer = styled.div`
-  border: 2px solid #336155;
+  border: .2rem solid #336155;
   padding: 4rem 2rem;
   ${columnBox()}
 `;
