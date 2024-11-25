@@ -1,21 +1,24 @@
 import { useEffect, useRef, useState } from "react";
-import { reviewWithImage } from "../components/reviewSection/const";
+import useResponsive from "./useResponsive";
 
-export default function useReviewSection() {
+export default function useReviewSection(imageList) {
   // 임시 이미지
   const [bgImage, setBgImage] = useState([]);
   const [currentIndex, setCurrentIndex] = useState(0);
   const [cardWidth, setCardWidth] = useState(0);
   const [visibleCard, setVisibleCard] = useState(4);
   const containerRef = useRef(null);
+  const { isMobile } = useResponsive();
 
   useEffect(() => {
     const calculateVisibleCard = () => {
       if (containerRef.current?.children[0]) {
-        setCardWidth(containerRef.current.children[0].offsetWidth + 20);
+        setCardWidth(containerRef.current.children[0].offsetWidth + 10);
 
         // viewport에 보이는 카드 수 계산 (현재 컨테이너 너비 / 카드 너비)
-        setVisibleCard(Math.ceil(containerRef.current.offsetWidth / cardWidth));
+        setVisibleCard(
+          Math.floor(containerRef.current.offsetWidth / cardWidth)
+        );
       }
     };
     calculateVisibleCard();
@@ -26,22 +29,32 @@ export default function useReviewSection() {
   }, [bgImage, cardWidth]);
 
   const handleSlide = (direction) => {
-    setCurrentIndex((prev) => {
-      if (direction === "left") {
-        return prev === bgImage.length - visibleCard ? 0 : prev + 1;
-      } else {
-        return prev === 0 ? bgImage.length - visibleCard : prev - 1;
-      }
-    });
+    if (isMobile) {
+      setCurrentIndex((prev) => {
+        if (direction === "left") {
+          return prev === 0 ? imageList.length - 1 : prev - 1;
+        } else {
+          return prev === imageList.length - 1 ? 0 : prev + 1;
+        }
+      });
+    } else {
+      setCurrentIndex((prev) => {
+        if (direction === "left") {
+          return prev === 0 ? imageList.length - visibleCard : prev - 1;
+        } else {
+          return prev === imageList.length - visibleCard ? 0 : prev + 1;
+        }
+      });
+    }
   };
 
   const transform = -currentIndex * cardWidth;
 
   useEffect(() => {
-    if (bgImage) {
-      setBgImage(reviewWithImage);
+    if (imageList) {
+      setBgImage(imageList);
     }
-  }, [bgImage]);
+  }, [imageList]);
 
   return { bgImage, transform, handleSlide, containerRef };
 }
