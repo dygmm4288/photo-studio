@@ -1,5 +1,5 @@
 import debounce from "lodash/debounce";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { useLocation } from "react-router";
 import { create } from "zustand";
 
@@ -13,19 +13,17 @@ const touchCond = () => window.scrollY < 20;
 
 const useHeader = () => {
   const { isTouched, touch, untouch } = useTouch();
-  const [isHome, setIsHome] = useState(false);
   const location = useLocation();
+  const isHome = location.pathname.includes("home");
+
+  const handleTouch = (isHome) => {
+    if (isHome && touchCond()) touch();
+    else untouch();
+  };
 
   useEffect(() => {
     const handleScroll = debounce(() => {
-      if (!isHome) {
-        return;
-      }
-      if (touchCond()) {
-        touch();
-      } else {
-        untouch();
-      }
+      handleTouch(isHome);
     }, 100);
     window.addEventListener("scroll", handleScroll);
     return () => {
@@ -34,12 +32,8 @@ const useHeader = () => {
   }, []);
 
   useEffect(() => {
-    const nextIsHome = location.pathname.includes("home");
-    setIsHome(nextIsHome);
-
-    if (!nextIsHome) untouch();
-    else if (nextIsHome && touchCond()) touch();
-  }, [location, isHome]);
+    handleTouch(isHome);
+  }, [isHome]);
 
   return { isTouched };
 };
