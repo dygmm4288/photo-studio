@@ -31,7 +31,7 @@ const KakaoMap = () => {
     });
   }, [isLoaded, container.current]);
 
-  return <div ref={container} style={{ width: 350, height: 350 }}></div>;
+  return <div ref={container} style={{ width: "100%", height: "100%" }}></div>;
 };
 
 export default KakaoMap;

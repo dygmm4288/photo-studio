@@ -10,7 +10,7 @@ import {
 import { flex, rowBox } from "../../../css/layout.styles";
 
 export const Header = styled.header`
-  z-index: 1;
+  z-index: 20;
   position: fixed;
   left: 0;
   right: 0;

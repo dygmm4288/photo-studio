@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { heading1 } from "../../../css/fonts.styles";
+import { bgTertiary, heading1 } from "../../../css/fonts.styles";
 import { columnBox } from "../../../css/layout.styles";
 
 export const ComeWrapper = styled.section`
@@ -16,15 +16,22 @@ export const ComeHeading = styled.h1`
 `;
 
 export const ComeMapWrapper = styled.div`
-  position: absolute;
-  left: 3rem;
-  top: 3.6rem;
+  position: relative;
+  width: 116.8rem;
+  height: 83.5rem;
 `;
 
 export const ComeMapForm = styled.form`
   ${columnBox({ gap: 1.2 })}
   padding: 2.5rem 4.1rem;
   align-items: stretch;
+  position: absolute;
+  left: 3rem;
+  top: 3.6rem;
+  z-index: 10;
+  ${bgTertiary()}
+  border-radius: 1rem;
+  width: 41.4rem;
 `;
 
 export const ComeMapButtonWrapper = styled.div`
