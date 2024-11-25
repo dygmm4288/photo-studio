@@ -2,12 +2,16 @@ import { Link } from "react-router-dom";
 import Button from "../../components/common/components/Button";
 import { navMenus } from "../../components/layout/const/header.const";
 import * as St from "../../components/layout/styles/header.styles";
+import useHeader from "../../store/useHeader";
 
 const Header = () => {
+  const { isTouched } = useHeader();
   return (
-    <St.Header>
+    <St.Header isTouched={isTouched}>
       <St.HeaderWrapper>
-        <St.HeaderLogo>포레스트 픽쳐스</St.HeaderLogo>
+        <St.HeaderLogo>
+          <Link to='/home'>포레스트 픽쳐스</Link>
+        </St.HeaderLogo>
         <St.NavWrapper>
           <St.NavList as={"ul"}>
             {navMenus.map((menu) => (

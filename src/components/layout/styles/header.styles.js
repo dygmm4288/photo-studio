@@ -1,5 +1,10 @@
 import styled from "styled-components";
-import { heading2, heading3, textWhite } from "../../../css/fonts.styles";
+import {
+  bgBlack,
+  heading2,
+  heading3,
+  textWhite,
+} from "../../../css/fonts.styles";
 import { flex, rowBox } from "../../../css/layout.styles";
 
 export const Header = styled.header`
@@ -9,7 +14,11 @@ export const Header = styled.header`
   right: 0;
   padding: 3rem 0;
   width: 100vw;
-  backdrop-filter: blur(10px);
+  background-color: unset;
+  ${(props) => !props.isTouched && bgBlack()};
+  transition: backdrop-filter, background-color 0.5s ease;
+  backdrop-filter: blur(0px);
+  ${(props) => props.isTouched && "backdrop-filter: blur(5px)"};
 `;
 
 export const HeaderWrapper = styled.div`
@@ -23,8 +32,10 @@ export const HeaderLogo = styled.h1`
   ${flex()}
   justify-content: center;
   align-items: center;
-  ${heading2({ bold: true })}
-  ${textWhite()}
+  * {
+    ${heading2({ bold: true })}
+    ${textWhite()}
+  }
 `;
 export const NavWrapper = styled.nav``;
 
