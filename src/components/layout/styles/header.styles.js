@@ -1,8 +1,10 @@
 import styled from "styled-components";
 import {
   bgBlack,
+  bgPrimary,
   heading2,
   heading3,
+  textPrimary,
   textWhite,
 } from "../../../css/fonts.styles";
 import { flex, rowBox } from "../../../css/layout.styles";
@@ -51,5 +53,27 @@ export const NavItem = styled.li`
   justify-content: center;
   align-items: center;
 
-  ${(props) => props.isActivate && `background-color: red;`};
+  transition: all 0.2s ease;
+  position: relative;
+  ::before {
+    content: "";
+    transition: all 0.2s ease;
+    display: block;
+    height: 0;
+    bottom: 1rem;
+    left: 0;
+    right: 0;
+    position: absolute;
+  }
+
+  ${(props) =>
+    props.isActive &&
+    `
+    ${textPrimary()}
+    ::before {
+      height: 0.1rem;
+      ${bgPrimary()}
+
+    }
+  `};
 `;
