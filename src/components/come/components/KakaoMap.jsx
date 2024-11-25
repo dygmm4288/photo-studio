@@ -23,7 +23,6 @@ const KakaoMap = () => {
   }, []);
 
   useEffect(() => {
-    console.log("use effect", isLoaded, container.current);
     if (!isLoaded || !container.current) return;
 
     new window.kakao.maps.Map(container.current, {
