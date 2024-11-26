@@ -22,7 +22,7 @@ export default function BookingConfirmationBar({
           <br />
           <p>
             선택하신 옵션은
-            <St.BookingInfo>{selectedOption} 입니다.</St.BookingInfo>
+            <St.BookingInfo>{selectedOption?.product} 입니다.</St.BookingInfo>
           </p>
         </div>
         <St.BookingButton>예약하기</St.BookingButton>

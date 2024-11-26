@@ -28,9 +28,11 @@ const availableOptions = [
 ];
 
 export default function OptionSelector({ selectedOption, onChangeOption }) {
-  const handleToggleOption = (product) => {
-    onChangeOption(product);
+  const handleToggleOption = (option) => {
+    onChangeOption(option);
   };
+
+  console.log(selectedOption);
 
   return (
     <St.FromSectionWrapper>
@@ -47,8 +49,8 @@ export default function OptionSelector({ selectedOption, onChangeOption }) {
                   id={option.product}
                   name={option.product}
                   value={option.product}
-                  checked={selectedOption === option.product}
-                  onChange={() => handleToggleOption(option.product)}
+                  checked={selectedOption?.product === option.product}
+                  onChange={() => handleToggleOption(option)}
                 />
                 <label htmlFor={option.product}>{option.product}</label>
               </St.OptionCheckboxWrapper>
