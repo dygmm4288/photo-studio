@@ -55,6 +55,10 @@ export default function ImportantNotes() {
           </ul>
         </div>
       ))}
+      <St.AgreeCheckboxWrapper>
+        <input type="checkbox" id="agree" value="agree" name="agree" required />
+        <label htmlFor="agree">위 사항들을 숙지 하였으며 동의합니다.</label>
+      </St.AgreeCheckboxWrapper>
     </St.ImportantNoteContainer>
   );
 }

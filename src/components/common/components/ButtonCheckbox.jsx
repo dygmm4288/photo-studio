@@ -20,7 +20,7 @@ const ButtonCheckbox = ({
   return (
     <St.ButtonCheckboxWrapper selected={isSelected} disabled={disabled}>
       <St.ButtonCheckbox
-        type='checkbox'
+        type="checkbox"
         id={id || defaultId}
         onChange={handleChange}
         {...props}

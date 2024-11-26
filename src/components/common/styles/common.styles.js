@@ -93,7 +93,7 @@ export const ButtonCheckboxWrapper = styled.div`
     `}
     border-radius: 0.5rem;
   border: 1px solid #336155;
-  width: 11rem;
+  width: 13rem;
 `;
 export const ButtonCheckbox = styled.input`
   display: none;
