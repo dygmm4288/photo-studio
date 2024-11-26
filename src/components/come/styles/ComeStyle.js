@@ -17,8 +17,8 @@ export const ComeHeading = styled.h1`
 
 export const ComeMapWrapper = styled.div`
   position: relative;
-  width: 116.8rem;
-  height: 83.5rem;
+  width: 100%;
+  aspect-ratio: 16 / 8;
 `;
 
 export const ComeMapForm = styled.form`
