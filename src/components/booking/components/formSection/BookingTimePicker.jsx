@@ -18,7 +18,7 @@ const timeSlots = [
   "5:30 PM",
 ];
 
-export default function BookingTimePicker() {
+export default function BookingTimePicker({ selectedTime, onChangeTime }) {
   return (
     <St.FromSectionWrapper>
       <St.FormSectionDescText>

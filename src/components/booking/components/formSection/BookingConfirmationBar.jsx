@@ -1,6 +1,11 @@
 import * as St from "../../styles/BookingStyles";
 
-export default function BookingConfirmationBar({ onSubmit }) {
+export default function BookingConfirmationBar({
+  selectedDate,
+  personalInfo,
+  selectedOptions,
+  selectedTime,
+}) {
   return (
     <St.BookingConfirmationBarContainer>
       {/* TODO: 예약자 이름, 날짜, 시간, 옵션 */}
@@ -8,17 +13,19 @@ export default function BookingConfirmationBar({ onSubmit }) {
       <St.BookingInfoWrapper>
         <div>
           <p>
-            홍길동 님,
-            <St.BookingInfo>2024년 11월 30일 화요일 2:30PM</St.BookingInfo>
+            {personalInfo.username} 님,
+            <St.BookingInfo>
+              {selectedDate} {selectedTime}
+            </St.BookingInfo>
             을(를) 선택하셨습니다.
           </p>
           <br />
           <p>
             선택하신 옵션은
-            <St.BookingInfo>프리미업 스냅촬영 입니다.</St.BookingInfo>
+            <St.BookingInfo>{selectedOptions} 입니다.</St.BookingInfo>
           </p>
         </div>
-        <St.BookingButton onClick={onSubmit}>예약하기</St.BookingButton>
+        <St.BookingButton>예약하기</St.BookingButton>
       </St.BookingInfoWrapper>
     </St.BookingConfirmationBarContainer>
   );

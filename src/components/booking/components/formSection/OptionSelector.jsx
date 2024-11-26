@@ -23,7 +23,15 @@ const availableOptions = [
   },
 ];
 
-export default function OptionSelector() {
+export default function OptionSelector({ selectedOptions, onChangeOption }) {
+  const handleToggleOption = (product) => {
+    const updateOption = selectedOptions.includes(product)
+      ? selectedOptions.filter((option) => option !== product)
+      : [...selectedOptions, product];
+
+    onChangeOption(updateOption);
+  };
+
   return (
     <St.FromSectionWrapper>
       <St.FormSectionDescText>
@@ -39,6 +47,8 @@ export default function OptionSelector() {
                   id={option.product}
                   name={option.product}
                   value={option.product}
+                  checked={selectedOptions.includes(option.product)}
+                  onChange={() => handleToggleOption(option.product)}
                 />
                 <label htmlFor={option.product}>{option.product}</label>
               </St.OptionCheckboxWrapper>
