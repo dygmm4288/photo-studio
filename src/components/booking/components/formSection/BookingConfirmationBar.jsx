@@ -3,7 +3,7 @@ import * as St from "../../styles/BookingStyles";
 export default function BookingConfirmationBar({
   selectedDate,
   personalInfo,
-  selectedOptions,
+  selectedOption,
   selectedTime,
 }) {
   return (
@@ -22,7 +22,7 @@ export default function BookingConfirmationBar({
           <br />
           <p>
             선택하신 옵션은
-            <St.BookingInfo>{selectedOptions} 입니다.</St.BookingInfo>
+            <St.BookingInfo>{selectedOption} 입니다.</St.BookingInfo>
           </p>
         </div>
         <St.BookingButton>예약하기</St.BookingButton>

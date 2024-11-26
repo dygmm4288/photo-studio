@@ -18,7 +18,24 @@ const timeSlots = [
   "5:30 PM",
 ];
 
-export default function BookingTimePicker({ selectedTime, onChangeTime }) {
+export default function BookingTimePicker({
+  selectedTime,
+  selectedOption,
+  onChangeTime,
+}) {
+  const maxTimeSlots = (selectedOption?.duration || 0) * 2;
+
+  console.log(selectedOption);
+
+  const onChageTimeSlots = (time) => {
+    if (selectedTime.includes(time)) {
+      const updateTime = selectedTime.filter((t) => t !== time);
+      onChangeTime(updateTime);
+    } else if (selectedTime.length < maxTimeSlots) {
+      const updateTime = [...selectedTime, time];
+      onChangeTime(updateTime);
+    }
+  };
   return (
     <St.FromSectionWrapper>
       <St.FormSectionDescText>
@@ -26,7 +43,17 @@ export default function BookingTimePicker({ selectedTime, onChangeTime }) {
       </St.FormSectionDescText>
       <St.BookingTimeSlotWrapper>
         {timeSlots.map((time) => (
-          <ButtonCheckbox key={time} label={time}></ButtonCheckbox>
+          <ButtonCheckbox
+            key={time}
+            label={time}
+            value={time}
+            checked={selectedTime.includes(time)}
+            disabled={
+              selectedTime.length >= maxTimeSlots &&
+              !selectedTime.includes(time)
+            }
+            onChange={() => onChageTimeSlots(time)}
+          />
         ))}
       </St.BookingTimeSlotWrapper>
     </St.FromSectionWrapper>

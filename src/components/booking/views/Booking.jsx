@@ -6,7 +6,7 @@ import { useState } from "react";
 
 export default function Booking() {
   const [selectedDate, setSelectedDate] = useState(null);
-  const [selectedOption, setSelectedOption] = useState([]);
+  const [selectedOption, setSelectedOption] = useState(null);
   const [selectedTime, setSeletedTime] = useState([]);
   const [personalInfo, setPersonalInfo] = useState({
     username: "",
@@ -18,8 +18,8 @@ export default function Booking() {
     setPersonalInfo((prev) => ({ ...prev, [field]: value }));
   };
 
-  const onChangeOptionSelector = (options) => {
-    setSelectedOption(options);
+  const onChangeOptionSelector = (option) => {
+    setSelectedOption(option);
   };
 
   const onChangeTimePicker = (time) => {
@@ -35,14 +35,14 @@ export default function Booking() {
           onChangePersonalInfo={onChangePersonalInfo}
           time={selectedTime}
           onChangeTime={onChangeTimePicker}
-          options={selectedOption}
+          option={selectedOption}
           onChangeOption={onChangeOptionSelector}
         />
       </St.BookingWrapper>
       <BookingConfirmationBar
         personalInfo={personalInfo}
         selectedDate={selectedDate}
-        selectedOptions={selectedOption}
+        selectedOption={selectedOption}
         selectedTime={selectedTime}
       />
     </St.BookingContainer>

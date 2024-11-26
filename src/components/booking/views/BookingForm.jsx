@@ -9,7 +9,7 @@ export default function BookingForm({
   personalInfoValues,
   time,
   onChangeTime,
-  options,
+  option,
   onChangeOption,
 }) {
   return (
@@ -19,11 +19,12 @@ export default function BookingForm({
         onChangePersonalInfo={onChangePersonalInfo}
         personalInfoValues={personalInfoValues}
       />
-      <OptionSelector
-        selectedOptions={options}
-        onChangeOption={onChangeOption}
+      <OptionSelector selectedOption={option} onChangeOption={onChangeOption} />
+      <BookingTimePicker
+        selectedTime={time}
+        onChangeTime={onChangeTime}
+        selectedOption={option}
       />
-      <BookingTimePicker selectedTime={time} onChangeTime={onChangeTime} />
     </St.BookingFormContainer>
   );
 }
