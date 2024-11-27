@@ -25,7 +25,7 @@ const KakaoMap = () => {
   useEffect(() => {
     if (!isLoaded || !container.current) return;
 
-    new window.kakao.maps.Map(container.current, {
+    const map = new window.kakao.maps.Map(container.current, {
       center: new window.kakao.maps.LatLng(33.3617, 126.5292), //지도의 중심좌표.
       level: 9, //지도의 레벨(확대, 축소 정도)
       disableDoubleClick: false,
@@ -33,6 +33,10 @@ const KakaoMap = () => {
       draggable: false,
       keyboardShortcuts: false,
     });
+    const markerPosition = new window.kakao.maps.LatLng(33.450701, 126.570667);
+    const marker = new window.kakao.maps.Marker({ position: markerPosition });
+
+    marker.setMap(map);
   }, [isLoaded, container.current]);
 
   return <div ref={container} style={{ width: "100%", height: "100%" }}></div>;
