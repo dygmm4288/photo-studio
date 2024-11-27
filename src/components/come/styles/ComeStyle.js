@@ -25,6 +25,8 @@ export const ComeMainText = styled.p`
   ${rowBox()}
   align-items: center;
   justify-content: center;
+  ${(props) => props.hover && "text-decoration: underline;"};
+  ${(props) => props.pointer && "cursor: pointer;"};
 `;
 
 export const ComeMapWrapper = styled.div`
