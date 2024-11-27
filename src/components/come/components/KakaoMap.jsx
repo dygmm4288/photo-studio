@@ -6,7 +6,7 @@ const KakaoMap = () => {
   const container = useRef(null);
 
   useEffect(() => {
-    const loader = new Loader().execute();
+    const loader = new Loader();
     const onLoad = () => {
       setLoaded(true);
     };
@@ -16,6 +16,7 @@ const KakaoMap = () => {
 
     loader.addEventListener("onload", onLoad);
     loader.addEventListener("onerror", onError);
+    loader.execute();
     return () => {
       loader.removeEventListener("onload", onLoad);
       loader.removeEventListener("onerror", onError);

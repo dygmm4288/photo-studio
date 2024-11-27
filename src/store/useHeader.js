@@ -17,7 +17,6 @@ const useHeader = () => {
   const isHome = location.pathname.includes("home");
 
   const handleTouch = (isHome) => {
-    console.log({ isHome, touchCond: touchCond() });
     if (isHome && touchCond()) touch();
     else untouch();
   };
