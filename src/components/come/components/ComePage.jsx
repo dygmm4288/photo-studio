@@ -1,19 +1,12 @@
-import { useState } from "react";
 import CopyIcon from "../../../assets/icons/CopyIcon";
 import useToast from "../../../store/toast/useToast";
+import useHover from "../../common/hooks/useHover";
 import * as St from "../styles/ComeStyle";
 import ComeMap from "./ComeMap";
+
 const ComePage = () => {
-  const [hover, setHover] = useState(false);
+  const { hover, hoverHandlers } = useHover();
   const { showToast } = useToast();
-
-  const handleMouseEnter = () => {
-    setHover(true);
-  };
-
-  const handleMouseLeave = () => {
-    setHover(false);
-  };
 
   const handleClick = async () => {
     try {
@@ -32,8 +25,7 @@ const ComePage = () => {
           hover={hover}
           pointer
           onClick={handleClick}
-          onMouseEnter={handleMouseEnter}
-          onMouseLeave={handleMouseLeave}>
+          {...hoverHandlers}>
           제주도 서귀포시 중문로 123
           <CopyIcon />
         </St.ComeMainText>
