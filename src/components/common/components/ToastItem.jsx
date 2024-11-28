@@ -1,9 +1,18 @@
 import { useEffect } from "react";
 import { omitObject } from "../../../lib/util";
 import useToast from "../../../store/toast/useToast";
+import * as St from "../styles/toast.styles";
+import ToastIcon from "./ToastIcon";
 
 const ToastItem = ({ toast }) => {
   const { removeToast } = useToast();
+
+  const toastOptions = omitObject(toast, [
+    "id",
+    "autoClose",
+    "onClose",
+    "duration",
+  ]);
 
   const handleClose = () => {
     removeToast(toast.id);
@@ -25,19 +34,14 @@ const ToastItem = ({ toast }) => {
     };
   }, []);
 
-  if (toast.component)
-    return (
-      <toast.component
-        {...omitObject(toast, ["id", "autoClose", "onClose", "duration"])}
-      />
-    );
+  if (toast.component) return <toast.component {...toastOptions} />;
 
   return (
-    <div>
+    <St.ToastItemWrapper {...omitObject(toastOptions, "icon")}>
+      {toast.icon && <ToastIcon type={toast.type} />}
+      <St.ToastText>{toast.message}</St.ToastText>
       {toast.showCloseBtn && <button onClick={handleClose}>close</button>}
-      {toast.icon && <div>icon</div>}
-      {toast.message}
-    </div>
+    </St.ToastItemWrapper>
   );
 };
 

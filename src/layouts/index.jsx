@@ -13,6 +13,7 @@ const Layout = () => {
 
   return (
     <RouterGuard>
+      <ToastContainer />
       <Header />
       <Main>
         <Outlet />
@@ -20,7 +21,6 @@ const Layout = () => {
       <FloatingButton />
       <Footer />
       <Modal />
-      <ToastContainer />
     </RouterGuard>
   );
 };

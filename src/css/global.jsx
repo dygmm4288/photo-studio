@@ -81,6 +81,10 @@ const GlobalStyle = createGlobalStyle`
     --black: #282828;
     --disabled: #bdbdbd;
     --closed: #e46962;
+    --bgClosed: #ffd9d9;
+    --bgAvailable: #e0ffd9;
+    --bgDisabled: #eee;
+
   }
 `;
 

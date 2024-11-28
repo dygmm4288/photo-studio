@@ -102,13 +102,13 @@ export const bgPrimary = () => css`
   background-color: var(--primary);
 `;
 export const bgDisabled = () => css`
-  background-color: var(--bg-disabled);
+  background-color: var(--bgDisabled);
 `;
 export const bgAvailable = () => css`
   background-color: var(--available);
 `;
 export const bgClosed = () => css`
-  background-color: var(--bg-closed);
+  background-color: var(--bgClosed);
 `;
 export const bgWhite = () => css`
   background-color: var(--white);

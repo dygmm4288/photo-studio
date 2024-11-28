@@ -15,7 +15,7 @@ const createToast = (options = {}) => {
     id: uuid(),
     message: options.message || "",
     type: options.type || ToastType.INFO,
-    duration: options.duration || 3000,
+    duration: options.duration || 5000,
     position: options.position || ToastPosition.BOTTOM_CENTER,
     onClose: options.onClose,
     component: options.component || null,
