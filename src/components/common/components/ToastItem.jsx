@@ -16,11 +16,14 @@ const ToastItem = ({ toast }) => {
   ]);
 
   const handleClose = () => {
-    removeToast(toast.id);
     setExisting(false);
-    if (toast.onClose) {
-      toast.onClose();
-    }
+    let timer = setTimeout(() => {
+      removeToast(toast.id);
+      if (toast.onClose) {
+        toast.onClose();
+      }
+      clearTimeout(timer);
+    }, 300);
   };
 
   useEffect(() => {
