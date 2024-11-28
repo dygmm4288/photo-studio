@@ -71,54 +71,54 @@ export const caption1 = () => css`
 `;
 
 export const textPrimary = () => css`
-  color: #336155;
+  color: var(--primary);
 `;
 export const textSecondary = () => css`
-  color: #4daabc;
+  color: var(--secondary);
 `;
 export const textTertiary = () => css`
-  color: #f7f1ed;
+  color: var(--tertiary);
 `;
 export const textAccent = () => css`
-  color: #ff9100;
+  color: var(--accent);
 `;
 export const textWhite = () => css`
-  color: #fff;
+  color: var(--white);
 `;
 export const textGray = () => css`
-  color: #757575;
+  color: var(--gray);
 `;
 export const textBlack = () => css`
-  color: #282828;
+  color: var(--black);
 `;
 export const textDisabled = () => css`
-  color: #bdbdbd;
+  color: var(--disabled);
 `;
 export const textClosed = () => css`
-  color: #e46962;
+  color: var(--closed);
 `;
 
 export const bgPrimary = () => css`
-  background-color: #336155;
+  background-color: var(--primary);
 `;
 export const bgDisabled = () => css`
-  background-color: #eee;
+  background-color: var(--bg-disabled);
 `;
 export const bgAvailable = () => css`
-  background-color: #e0ffd9;
+  background-color: var(--available);
 `;
 export const bgClosed = () => css`
-  background-color: #ffd9d9;
+  background-color: var(--bg-closed);
 `;
 export const bgWhite = () => css`
-  background-color: #fff;
+  background-color: var(--white);
 `;
 export const bgTertiary = () => css`
-  background-color: #f7f1ed;
+  background-color: var(--tertiary);
 `;
 export const bgBlack = () => css`
-  background-color: #282828;
+  background-color: var(--black);
 `;
 export const bgAccent = () => css`
-  background-color: #ff9100;
+  background-color: var(--accent);
 `;

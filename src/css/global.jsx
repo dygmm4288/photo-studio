@@ -71,6 +71,17 @@ const GlobalStyle = createGlobalStyle`
     padding: 0;
     margin: 0;
   }
+  :root {
+    --primary: #336155;
+    --secondary: #4daabc;
+    --tertiary: #f7f1ed;
+    --accent: #ff9100;
+    --white: #fff;
+    --gray: #757575;
+    --black: #282828;
+    --disabled: #bdbdbd;
+    --closed: #e46962;
+  }
 `;
 
 export default GlobalStyle;
