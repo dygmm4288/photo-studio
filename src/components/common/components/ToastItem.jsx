@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { omitObject } from "../../../lib/util";
 import useToast from "../../../store/toast/useToast";
 import * as St from "../styles/toast.styles";
@@ -6,6 +6,7 @@ import ToastIcon from "./ToastIcon";
 
 const ToastItem = ({ toast }) => {
   const { removeToast } = useToast();
+  const [isExisting, setExisting] = useState(true);
 
   const toastOptions = omitObject(toast, [
     "id",
@@ -16,7 +17,10 @@ const ToastItem = ({ toast }) => {
 
   const handleClose = () => {
     removeToast(toast.id);
-    if (toast.onClose) toast.onClose();
+    setExisting(false);
+    if (toast.onClose) {
+      toast.onClose();
+    }
   };
 
   useEffect(() => {
@@ -37,7 +41,9 @@ const ToastItem = ({ toast }) => {
   if (toast.component) return <toast.component {...toastOptions} />;
 
   return (
-    <St.ToastItemWrapper {...omitObject(toastOptions, "icon")}>
+    <St.ToastItemWrapper
+      className={isExisting ? "toast-enter" : "toast-exit"}
+      {...omitObject(toastOptions, "icon")}>
       {toast.icon && <ToastIcon type={toast.type} />}
       <St.ToastText>{toast.message}</St.ToastText>
       {toast.showCloseBtn && <button onClick={handleClose}>close</button>}

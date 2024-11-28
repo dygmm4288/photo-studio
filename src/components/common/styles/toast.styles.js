@@ -93,6 +93,36 @@ export const ToastWrapper = styled.div`
   right: 0;
   top: 0;
   bottom: 0;
+
+  @keyframes fadeIn {
+    0% {
+      opacity: 0;
+      transform: translateY(20%);
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes fadeOut {
+    0% {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    100% {
+      opacity: 0;
+      transform: translateY(-20%);
+    }
+  }
+
+  .toast-enter {
+    animation: fadeIn 0.3s ease-out forwards;
+  }
+
+  .toast-exit {
+    animation: fadeOut 0.3s ease-out forwards;
+  }
 `;
 
 export const ToastItemWrapper = styled.div`
