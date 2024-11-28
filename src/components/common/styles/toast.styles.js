@@ -1,5 +1,5 @@
 import styled, { css } from "styled-components";
-import { rowBox } from "../../../css/layout.styles";
+import { columnBox, rowBox } from "../../../css/layout.styles";
 import { ToastPosition, ToastType } from "../../../store/toast/toast.const";
 
 // -----------------------------------------------
@@ -9,45 +9,38 @@ const positionStyles = (position) => {
   switch (position) {
     case ToastPosition.TOP_RIGHT:
       return `
-        position: absolute;
         top: 15rem;
         right: 1rem;
       `;
     case ToastPosition.TOP_LEFT:
       return `
-        position: absolute;
         top: 15rem;
         left: 1rem;
       `;
     case ToastPosition.BOTTOM_RIGHT:
       return `
-        position: absolute;
         bottom: 1rem;
         right: 1rem;
       `;
     case ToastPosition.BOTTOM_LEFT:
       return `
-        position: absolute;
         bottom: 1rem;
         left: 1rem;
       `;
     case ToastPosition.TOP_CENTER:
       return `
-        position: absolute;
         top: 1rem;
         left: 50%;
         transform: translateX(-50%);
       `;
     case ToastPosition.BOTTOM_CENTER:
       return `
-        position: absolute;
         bottom: 1rem;
         left: 50%;
         transform: translateX(-50%);
       `;
     case ToastPosition.CENTER:
       return `
-        position: absolute;
         top: 50%;
         left: 50%;
         transform: translate(-50%, -50%);
@@ -60,7 +53,7 @@ const positionStyles = (position) => {
 // -----------------------------------------------
 // Toast Type CSS
 // -----------------------------------------------
-const toastTypeCss = (type, position) => css`
+const toastTypeCss = (type) => css`
   border: 1px solid;
 
   ${type === ToastType.SUCCESS &&
@@ -82,17 +75,11 @@ const toastTypeCss = (type, position) => css`
       color: var(--closed);
     }
   `};
-
-  ${position && positionStyles(position)};
 `;
 
 export const ToastWrapper = styled.div`
-  position: fixed;
-
-  left: 0;
-  right: 0;
-  top: 0;
-  bottom: 0;
+  position: absolute;
+  inset: 0;
 
   @keyframes fadeIn {
     0% {
@@ -125,8 +112,14 @@ export const ToastWrapper = styled.div`
   }
 `;
 
+export const ToastListWrapper = styled.ul`
+  position: absolute;
+  ${(props) => positionStyles(props.position)}
+  ${columnBox({ gap: 1 })}
+  z-index: 500;
+`;
 export const ToastItemWrapper = styled.div`
-  ${(props) => toastTypeCss(props.type, props.position)}
+  ${(props) => toastTypeCss(props.type)}
   padding: 1.7rem 1.4rem;
   border-radius: 0.4rem;
   width: 35rem;
