@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { IoCloseSharp } from "react-icons/io5";
 import { omitObject } from "../../../lib/util";
 import useToast from "../../../store/toast/useToast";
 import * as St from "../styles/toast.styles";
@@ -49,7 +50,11 @@ const ToastItem = ({ toast }) => {
       {...omitObject(toastOptions, "icon")}>
       {toast.icon && <ToastIcon type={toast.type} />}
       <St.ToastText>{toast.message}</St.ToastText>
-      {toast.showCloseBtn && <button onClick={handleClose}>close</button>}
+      {toast.showCloseBtn && (
+        <St.ToastCloseBtn onClick={handleClose}>
+          <IoCloseSharp size={"2.4rem"} />
+        </St.ToastCloseBtn>
+      )}
     </St.ToastItemWrapper>
   );
 };

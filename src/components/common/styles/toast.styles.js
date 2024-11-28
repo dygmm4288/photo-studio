@@ -130,3 +130,13 @@ export const ToastItemWrapper = styled.div`
 export const ToastText = styled.p`
   flex: 1;
 `;
+
+export const ToastCloseBtn = styled.button`
+  outline: none;
+  background: none;
+  border: none;
+  ${rowBox()}
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+`;

@@ -17,6 +17,7 @@ const ComePage = () => {
         type: ToastType.SUCCESS,
         position: ToastPosition.TOP_RIGHT,
         icon: true,
+        showCloseBtn: true,
       });
     } catch (err) {
       console.error("clip board 복사 실패", err);
@@ -25,6 +26,7 @@ const ComePage = () => {
         type: ToastType.WARNING,
         position: ToastPosition.TOP_RIGHT,
         icon: true,
+        showCloseBtn: true,
       });
     }
   };
