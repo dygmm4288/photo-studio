@@ -22,7 +22,7 @@ const ComePage = () => {
       console.error("clip board 복사 실패", err);
       showToast({
         message: "주소 복사 실패",
-        type: ToastType.SUCCESS,
+        type: ToastType.WARNING,
         position: ToastPosition.TOP_RIGHT,
         icon: true,
       });
