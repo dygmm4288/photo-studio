@@ -32,8 +32,6 @@ export default function OptionSelector({ selectedOption, onChangeOption }) {
     onChangeOption(option);
   };
 
-  console.log(selectedOption);
-
   return (
     <St.FromSectionWrapper>
       <St.FormSectionDescText>
