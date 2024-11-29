@@ -44,7 +44,7 @@ export const useBookings = () => {
 
   useEffect(() => {
     fetchBookings();
-  }, [bookings]);
+  }, []);
 
   return { bookings, fetchBookings };
 };

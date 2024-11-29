@@ -3,8 +3,10 @@ import BookingConfirmationBar from "../components/formSection/BookingConfirmatio
 import BookingCalendar from "../components/calendarSection/BookingCalendar";
 import BookingForm from "./BookingForm";
 import { useState } from "react";
+import { useBookings } from "../hooks/useBookings";
 
 export default function Booking() {
+  const { bookings } = useBookings();
   const [selectedDate, setSelectedDate] = useState(null);
   const [selectedOption, setSelectedOption] = useState(null);
   const [selectedTime, setSeletedTime] = useState([]);
@@ -26,6 +28,17 @@ export default function Booking() {
     setSeletedTime(time);
   };
 
+  const getBookedTimesForDate = (date) => {
+    if (!date || !bookings) return [];
+
+    const booking = bookings.find((reserved) => {
+      const reservedDate = reserved.date.toISOString().split("T")[0];
+      return reservedDate === date;
+    });
+
+    return booking ? booking.times : [];
+  };
+
   return (
     <St.BookingContainer>
       <St.BookingWrapper>
@@ -37,6 +50,7 @@ export default function Booking() {
           onChangeTime={onChangeTimePicker}
           option={selectedOption}
           onChangeOption={onChangeOptionSelector}
+          bookedTimes={getBookedTimesForDate(selectedDate)}
         />
       </St.BookingWrapper>
       <BookingConfirmationBar

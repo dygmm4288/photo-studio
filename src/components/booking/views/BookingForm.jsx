@@ -11,6 +11,7 @@ export default function BookingForm({
   onChangeTime,
   option,
   onChangeOption,
+  bookedTimes,
 }) {
   return (
     <St.BookingFormContainer>
@@ -24,6 +25,7 @@ export default function BookingForm({
         selectedTime={time}
         onChangeTime={onChangeTime}
         selectedOption={option}
+        bookedTimes={bookedTimes}
       />
     </St.BookingFormContainer>
   );
