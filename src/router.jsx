@@ -2,6 +2,7 @@ import { createBrowserRouter } from "react-router-dom";
 import Booking from "./components/booking";
 import ComePage from "./components/come/components/ComePage";
 import Home from "./components/home";
+import Introduce from "./components/introduce/components/Introduce";
 import Layout from "./layouts";
 
 const router = createBrowserRouter([
@@ -22,8 +23,8 @@ const router = createBrowserRouter([
         element: <Booking />,
       },
       {
-        path: "gallery",
-        element: <div>갤러리</div>,
+        path: "introduce",
+        element: <Introduce />,
       },
     ],
   },
