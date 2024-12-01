@@ -4,10 +4,10 @@ import { introduceLargeImage, introduceSmallImages } from "./const";
 const IntroduceSection3 = () => {
   return (
     <St.IntroduceSection3Wrapper>
-      <St.IntroduceSection3Grid>
-        <St.IntroduceSection3LargeImageWrapper>
-          <img src={introduceLargeImage} />
-        </St.IntroduceSection3LargeImageWrapper>
+      <St.IntroduceSection3LargeImageWrapper>
+        <img src={introduceLargeImage} />
+      </St.IntroduceSection3LargeImageWrapper>
+      <St.IntroduceSection3RightWrapper>
         <St.IntroduceSection3TextWrapper>
           <St.IntroduceCategory>Hidden Spot</St.IntroduceCategory>
           <St.IntroduceHeading>주요 촬영 스팟</St.IntroduceHeading>
@@ -21,7 +21,7 @@ const IntroduceSection3 = () => {
             <img src={src} key={src} />
           ))}
         </St.IntroduceSection3SmallImageWrapper>
-      </St.IntroduceSection3Grid>
+      </St.IntroduceSection3RightWrapper>
     </St.IntroduceSection3Wrapper>
   );
 };

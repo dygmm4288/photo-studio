@@ -63,15 +63,61 @@ export const IntroduceSection1DetailWrapper = styled.div`
   ${columnBox({ gap: 4.8 })}
 `;
 
-export const IntroduceSection3Wrapper = styled.section``;
+export const IntroduceSection3Wrapper = styled.section`
+  padding: 13.6rem;
+  ${rowBox({ gap: 2 })}
+`;
 
-export const IntroduceSection3Grid = styled.div``;
+export const IntroduceSection3LargeImageWrapper = styled.div`
+  flex-basis: 50.8rem;
+  flex-shrink: 0;
+  height: 80.8rem;
 
-export const IntroduceSection3LargeImageWrapper = styled.div``;
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+`;
 
-export const IntroduceSection3TextWrapper = styled.div``;
+export const IntroduceSection3RightWrapper = styled.div`
+  ${columnBox({ gap: 4.4 })}
+`;
 
-export const IntroduceSection3SmallImageWrapper = styled.div``;
+export const IntroduceSection3TextWrapper = styled.div`
+  max-width: 52.4rem;
+  padding-left: 2rem;
+`;
+
+export const IntroduceSection3SmallImageWrapper = styled.div`
+  display: grid;
+  grid-template-columns: 31.7rem 30.2rem;
+  column-gap: 2.1rem;
+
+  img {
+    object-fit: cover;
+  }
+
+  img:nth-child(1) {
+    width: 31.7rem;
+    height: 30.8rem;
+  }
+  img:nth-child(2) {
+    width: 30.2rem;
+    height: 30.2rem;
+    margin-top: 3.1rem;
+  }
+  img:nth-child(3) {
+    width: 31.7rem;
+    height: 31.7rem;
+    margin-top: 1.5rem;
+  }
+  img:nth-child(4) {
+    width: 30.2rem;
+    height: 28.8rem;
+    margin-top: 2.7rem;
+  }
+`;
 
 export const IntroduceCategory = styled.p`
   ${textSecondary()}
