@@ -84,7 +84,20 @@ const GlobalStyle = createGlobalStyle`
     --bgClosed: #ffd9d9;
     --bgAvailable: #e0ffd9;
     --bgDisabled: #eee;
+  }
 
+  /* FullCalendar */
+  .fc-daygrid-day {
+    height: 7.5rem;
+  }
+
+  .fc-daygrid-day-top{
+    justify-content: center ;
+  }
+
+  .fc-daygrid-day-events {
+    display: flex;
+    justify-content: center;
   }
 `;
 
