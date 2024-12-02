@@ -10,7 +10,6 @@ export default function BookingTimePicker({
 }) {
   const maxTimeSlots = (selectedOption?.duration || 0) * 2;
 
-  console.log(bookedTimes);
   const onChageTimeSlots = (time) => {
     if (selectedTime.includes(time)) {
       const updateTime = selectedTime.filter((t) => t !== time);

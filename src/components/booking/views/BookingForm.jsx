@@ -12,10 +12,15 @@ export default function BookingForm({
   option,
   onChangeOption,
   bookedTimes,
+  agreeImportantNotes,
+  onChangeAgreeImportantNotes,
 }) {
   return (
     <St.BookingFormContainer>
-      <ImportantNotes />
+      <ImportantNotes
+        agreeImportantNotes={agreeImportantNotes}
+        onChangeAgreeImportantNotes={onChangeAgreeImportantNotes}
+      />
       <PersonalInformation
         onChangePersonalInfo={onChangePersonalInfo}
         personalInfoValues={personalInfoValues}

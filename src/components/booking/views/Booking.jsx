@@ -8,6 +8,7 @@ import { useBookings } from "../hooks/useBookings";
 export default function Booking() {
   const { bookings } = useBookings();
   const [selectedDate, setSelectedDate] = useState(null);
+  const [agreeImportantNotes, setAgreeImportantNotes] = useState(false);
   const [selectedOption, setSelectedOption] = useState(null);
   const [selectedTime, setSeletedTime] = useState([]);
   const [personalInfo, setPersonalInfo] = useState({
@@ -51,6 +52,8 @@ export default function Booking() {
           option={selectedOption}
           onChangeOption={onChangeOptionSelector}
           bookedTimes={getBookedTimesForDate(selectedDate)}
+          agreeImportantNotes={agreeImportantNotes}
+          onChangeAgreeImportantNotes={setAgreeImportantNotes}
         />
       </St.BookingWrapper>
       <BookingConfirmationBar
@@ -58,6 +61,7 @@ export default function Booking() {
         selectedDate={selectedDate}
         selectedOption={selectedOption}
         selectedTime={selectedTime}
+        agreeImportantNotes={agreeImportantNotes}
       />
     </St.BookingContainer>
   );
