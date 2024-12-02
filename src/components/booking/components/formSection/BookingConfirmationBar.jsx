@@ -2,6 +2,8 @@ import * as St from "../../styles/BookingStyles";
 import { db } from "../../../../lib/firebase";
 import { addDoc, collection } from "firebase/firestore";
 
+const NO_NAME = '______ ';
+
 export default function BookingConfirmationBar({
   selectedDate,
   personalInfo,
@@ -59,17 +61,17 @@ export default function BookingConfirmationBar({
         <div>
           <p>
             <St.BookingInfo>
-              {personalInfo.username ? `${personalInfo.username}` : "______ "}
+              {personalInfo.username ? `${personalInfo.username}` : NO_NAME}
             </St.BookingInfo>
             님, 선택하신 날짜는
             <St.BookingInfo>
-              {selectedDate ? selectedDate : " ______ "}
+              {selectedDate ? selectedDate : NO_NAME}
             </St.BookingInfo>
             이고, 선택하신 시간은
             <St.BookingInfo>
               {selectedTime.length > 0
                 ? selectedTime.sort().join(" ")
-                : " ______ "}
+                : NO_NAME}
             </St.BookingInfo>
             입니다.
           </p>
