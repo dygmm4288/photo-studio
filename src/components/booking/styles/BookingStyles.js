@@ -1,6 +1,22 @@
 import styled from "styled-components";
-import { body2, heading3, label1, textAccent } from "../../../css/fonts.styles";
-import { columnBox } from "../../../css/layout.styles";
+import {
+  bgAccent,
+  bgAvailable,
+  bgClosed,
+  bgDisabled,
+  bgTertiary,
+  body2,
+  caption1,
+  heading3,
+  label1,
+  textAccent,
+  textClosed,
+  textDisabled,
+  textPrimary,
+  textWhite,
+} from "../../../css/fonts.styles";
+import { columnBox, rowBox } from "../../../css/layout.styles";
+import { motion } from "framer-motion";
 
 export const BookingContainer = styled.div`
   margin-top: 10rem; // 헤더와의 간격
@@ -14,11 +30,54 @@ export const BookingWrapper = styled.div`
   ${columnBox({ gap: 5 })}
 `;
 
+// 예약 페이지 공통 //
+export const FromSectionWrapper = styled.div`
+  ${columnBox()}
+`;
+
+export const FormSectionDescText = styled.p`
+  ${heading3({ bold: true })}
+`;
+
 // 예약 캘린더 //
+export const BookingCalendarWrapper = styled.div`
+  width: 80rem;
+  height: 50rem;
+  margin-bottom: 5rem;
+`;
+
+export const BookingCalendarTitle = styled.p`
+  ${({ title }) => {
+    if (title.includes("휴일")) {
+      return `${bgClosed()}`;
+    } else if (title.includes("마감")) {
+      return `${bgDisabled()}`;
+    } else {
+      return `${bgAvailable()}`;
+    }
+  }};
+  ${({ title }) => {
+    if (title.includes("휴일")) {
+      console.log(title);
+      return `${textClosed()}`;
+    } else if (title.includes("마감")) {
+      return `${textDisabled()}`;
+    } else {
+      return `${textPrimary()}`;
+    }
+  }};
+  ${caption1()}
+  padding: 0.3rem 0.8rem;
+`;
+
+// 예약 폼 //
+export const BookingFormContainer = styled.div`
+  ${columnBox({ gap: 5 })}
+`;
 
 // 예약 전 필수 사항 //
 export const ImportantNoteContainer = styled.div`
-  border: .2rem solid #336155;
+  border: 0.2rem solid #336155;
   padding: 4rem 2rem;
   ${columnBox()}
 `;
@@ -45,16 +104,40 @@ export const NotesList = styled.li`
   ${body2()};
 `;
 
-// 예약자 정보 //
+export const AgreeCheckboxWrapper = styled.div`
+  ${rowBox({ gap: 0.5 })}
+  justify-content: center;
+  align-items: center;
+  ${body2({ bold: true })}
+`;
 
 // 예약 옵션 선택 //
+export const OptionCheckboxContainer = styled.div`
+  ${rowBox()}
+  justify-content: space-between;
+`;
+
+export const OptionCheckboxWrapper = styled.div`
+  ${rowBox({ gap: 0.5 })}
+  align-items: center;
+`;
+
+export const OptionIncludesText = styled.p`
+  text-indent: 1.8rem;
+`;
 
 // 예약 시간 선택 //
+export const BookingTimeSlotWrapper = styled.div`
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.5rem;
+  margin-bottom: 5rem;
+`;
 
 // 예약 확인 바 //
 export const BookingConfirmationBarContainer = styled.div`
   background-color: #336155;
-  height: 9rem;
+  height: 20rem;
   position: sticky;
   bottom: 0;
   left: 0;
@@ -77,9 +160,17 @@ export const BookingInfo = styled.span`
   ${textAccent()}
 `;
 
-export const BookingButton = styled.button`
-  background-color: #ff9100;
-  padding: 1rem 3rem;
-  color: #ffffff;
+export const BookingButton = styled(motion.button)`
+  ${bgTertiary()};
   ${label1()}
+  border: none;
+  text-align: center;
+  padding: 1.45rem 4.25rem;
+  outline: none;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  &:hover {
+    ${bgAccent()}
+    ${textWhite()}
+  }
 `;
