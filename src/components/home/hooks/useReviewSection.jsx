@@ -29,23 +29,16 @@ export default function useReviewSection(imageList) {
   }, [bgImage, cardWidth]);
 
   const handleSlide = (direction) => {
-    if (isMobile) {
-      setCurrentIndex((prev) => {
+    const delta = isMobile ? 1 : visibleCard;
+    
+    setCurrentIndex((prev) => {
         if (direction === "left") {
-          return prev === 0 ? imageList.length - 1 : prev - 1;
+          return prev === 0 ? imageList.length - delta : prev - 1;
         } else {
-          return prev === imageList.length - 1 ? 0 : prev + 1;
+          return prev === imageList.length - delta ? 0 : prev + 1;
         }
       });
-    } else {
-      setCurrentIndex((prev) => {
-        if (direction === "left") {
-          return prev === 0 ? imageList.length - visibleCard : prev - 1;
-        } else {
-          return prev === imageList.length - visibleCard ? 0 : prev + 1;
-        }
-      });
-    }
+    } 
   };
 
   const transform = -currentIndex * cardWidth;
