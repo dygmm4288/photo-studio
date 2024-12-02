@@ -16,7 +16,13 @@ export default function PersonalInformation({
     onChangePersonalInfo(field, event.target.value);
 
     if (field === "username") {
-      if (event.target.value.length >= 10) {
+      const regUsername = /[`~!@#$%^&*()_|+\-=?;:'",.<>\{\}\[\]\\\/ ]/gim;
+      if (regUsername.test(event.target.value)) {
+        setErrorMessage((prev) => ({
+          ...prev,
+          username: "특수문자는 사용할 수 없습니다.",
+        }));
+      } else if (event.target.value.length >= 10) {
         setErrorMessage((prev) => ({
           ...prev,
           username: "이름은 최대 10자입니다.",
