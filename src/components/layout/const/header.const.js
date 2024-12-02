@@ -1,10 +1,10 @@
 export const navMenus = [
   {
-    name: "오시는길",
-    href: "/come",
+    name: "사진관 소개",
+    href: "/introduce",
   },
   {
-    name: "갤러리",
-    href: "/gallery",
+    name: "오시는길",
+    href: "/come",
   },
 ];
