@@ -1,8 +1,9 @@
-import * as St from "../../styles/BookingStyles";
-import { db } from "../../../../lib/firebase";
 import { addDoc, collection } from "firebase/firestore";
+import _ from "lodash";
+import { db } from "../../../../lib/firebase";
+import * as St from "../../styles/BookingStyles";
 
-const NO_NAME = '______ ';
+const NO_NAME = "______ ";
 
 export default function BookingConfirmationBar({
   selectedDate,
@@ -55,24 +56,22 @@ export default function BookingConfirmationBar({
     }
   };
 
+  const username = personalInfo.username || NO_NAME;
+  const date = selectedDate || NO_NAME;
+  const times = _.isEmpty(selectedTime)
+    ? NO_NAME
+    : selectedTime.sort().join(", ");
+
   return (
     <St.BookingConfirmationBarContainer>
       <St.BookingInfoWrapper>
         <div>
           <p>
-            <St.BookingInfo>
-              {personalInfo.username ? `${personalInfo.username}` : NO_NAME}
-            </St.BookingInfo>
+            <St.BookingInfo>{username}</St.BookingInfo>
             님, 선택하신 날짜는
-            <St.BookingInfo>
-              {selectedDate ? selectedDate : NO_NAME}
-            </St.BookingInfo>
+            <St.BookingInfo>{date}</St.BookingInfo>
             이고, 선택하신 시간은
-            <St.BookingInfo>
-              {selectedTime.length > 0
-                ? selectedTime.sort().join(" ")
-                : NO_NAME}
-            </St.BookingInfo>
+            <St.BookingInfo>{times}</St.BookingInfo>
             입니다.
           </p>
           <br />
