@@ -1,11 +1,13 @@
 import useReviewSection from "../../hooks/useReviewSection";
 import ReviewIconLeft from "/assets/reviewIconLeft.png";
 import ReviewIconRight from "/assets/reviewIconRight.png";
+import { reviewWithImage } from "./const";
 import { FaCaretLeft, FaCaretRight } from "react-icons/fa";
 import * as St from "../../styles/HomeStyle";
 
 export default function ReviewCard() {
-  const { bgImage, transform, handleSlide, containerRef } = useReviewSection();
+  const { bgImage, transform, handleSlide, containerRef } =
+    useReviewSection(reviewWithImage);
 
   return (
     <St.CarouselWrapper>
@@ -24,6 +26,7 @@ export default function ReviewCard() {
                 alt="review-icon-left"
                 width={28}
                 height={28}
+                $left={true}
               />
               <St.CarouselCardTextIcon
                 src={ReviewIconRight}

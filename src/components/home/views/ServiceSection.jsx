@@ -6,9 +6,11 @@ import ThirdItemBg from "/assets/ServiceThird.jpg";
 import FourthItemBg from "/assets/ServiceFourth.jpg";
 import ServiceFirstItem from "../components/serviceSection/ServiceFirstItem";
 import useHome from "../hooks/useHome";
+import useResponsive from "../hooks/useResponsive";
 
 export default function ServiceSection() {
   const { animationState, animationTriggerPoint } = useHome();
+  const { isMobile } = useResponsive();
 
   return (
     <React.Fragment>
@@ -16,19 +18,31 @@ export default function ServiceSection() {
         <ServiceFirstItem
           titleSub={"Our Services"}
           title={"포레스트 픽쳐스의 서비스"}
-          description={`제주만의 감성으로 가득한 다양한 스냅 촬영 서비스\n를 제공 해드립니다. 가족, 연인, 그리고 소중한 친구들과 함께하는 제주에서의 특별한 순간을 기록해보세요.`}
+          description={
+            isMobile
+              ? `제주만의 감성으로 가득한 다양한 스냅 촬영\n서비스를 제공 해드립니다.\n가족, 연인, 그리고 소중한 친구들과 함께하는\n제주에서의 특별한 순간을 기록해보세요.`
+              : `제주만의 감성으로 가득한 다양한 스냅 촬영 서비스\n를 제공 해드립니다. 가족, 연인, 그리고 소중한 친구들과 함께하는 제주에서의 특별한 순간을 기록해보세요.`
+          }
           buttonText={"상세보기"}
           runAnimation={animationState}
         />
-
+        {isMobile && (
+          <span
+            style={{ height: "0.01rem" }}
+            ref={animationTriggerPoint}></span>
+        )}
         <ServiceInfo
           bg={SecondItemBg}
           infoNumber={1}
           infoText={`자연광으로\n촬영하는\n제주 감성 스냅샷`}
           runAnimation={animationState}
         />
-        <span style={{ height: "0.1rem" }} ref={animationTriggerPoint}></span>
-        <span style={{ height: "0.1rem" }}></span>
+        {!isMobile && (
+          <span
+            style={{ height: "0.01rem" }}
+            ref={animationTriggerPoint}></span>
+        )}
+        {!isMobile && <span style={{ height: "0.1rem" }}></span>}
         <ServiceInfo
           bg={ThirdItemBg}
           infoNumber={2}
