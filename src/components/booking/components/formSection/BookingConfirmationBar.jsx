@@ -1,7 +1,6 @@
 import * as St from "../../styles/BookingStyles";
 import { db } from "../../../../lib/firebase";
 import { addDoc, collection } from "firebase/firestore";
-import Button from "../../../common/components/Button";
 
 export default function BookingConfirmationBar({
   selectedDate,
@@ -80,21 +79,13 @@ export default function BookingConfirmationBar({
             <St.BookingInfo>{selectedOption?.product}</St.BookingInfo>입니다.
           </p>
         </div>
-        <Button
+        <St.BookingButton
           onClick={handleBooking}
-          theme="secondary"
-          disabled={
-            !selectedDate ||
-            !selectedTime.length ||
-            !agreeImportantNotes ||
-            !personalInfo.email ||
-            !personalInfo.phone ||
-            !personalInfo.username ||
-            !selectedOption
-          }>
+          whileHover={{ scale: 1.2 }}
+          whileTap={{ scale: 0.9 }}
+          transition={{ type: "spring", stiffness: 400, damping: 17 }}>
           예약하기
-        </Button>
-        {/* <St.BookingButton onClick={handleBooking}>예약하기</St.BookingButton> */}
+        </St.BookingButton>
       </St.BookingInfoWrapper>
     </St.BookingConfirmationBarContainer>
   );

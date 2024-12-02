@@ -1,6 +1,17 @@
 import styled from "styled-components";
-import { body2, heading3, label1, textAccent } from "../../../css/fonts.styles";
+import {
+  bgAccent,
+  bgDisabled,
+  bgPrimary,
+  bgTertiary,
+  body2,
+  heading3,
+  label1,
+  textAccent,
+  textWhite,
+} from "../../../css/fonts.styles";
 import { columnBox, rowBox } from "../../../css/layout.styles";
+import { motion } from "framer-motion";
 
 export const BookingContainer = styled.div`
   margin-top: 10rem; // 헤더와의 간격
@@ -66,8 +77,6 @@ export const AgreeCheckboxWrapper = styled.div`
   ${body2({ bold: true })}
 `;
 
-// 예약자 정보 //
-
 // 예약 옵션 선택 //
 export const OptionCheckboxContainer = styled.div`
   ${rowBox()}
@@ -94,7 +103,7 @@ export const BookingTimeSlotWrapper = styled.div`
 // 예약 확인 바 //
 export const BookingConfirmationBarContainer = styled.div`
   background-color: #336155;
-  height: 9rem;
+  height: 20rem;
   position: sticky;
   bottom: 0;
   left: 0;
@@ -117,9 +126,17 @@ export const BookingInfo = styled.span`
   ${textAccent()}
 `;
 
-export const BookingButton = styled.button`
-  background-color: #ff9100;
-  padding: 1rem 3rem;
-  color: #ffffff;
+export const BookingButton = styled(motion.button)`
+  ${bgTertiary()};
   ${label1()}
+  border: none;
+  text-align: center;
+  padding: 1.45rem 4.25rem;
+  outline: none;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  &:hover {
+    ${bgAccent()}
+    ${textWhite()}
+  }
 `;
