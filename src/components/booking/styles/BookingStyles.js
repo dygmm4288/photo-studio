@@ -1,13 +1,18 @@
 import styled from "styled-components";
 import {
   bgAccent,
+  bgAvailable,
+  bgClosed,
   bgDisabled,
-  bgPrimary,
   bgTertiary,
   body2,
+  caption1,
   heading3,
   label1,
   textAccent,
+  textClosed,
+  textDisabled,
+  textPrimary,
   textWhite,
 } from "../../../css/fonts.styles";
 import { columnBox, rowBox } from "../../../css/layout.styles";
@@ -35,6 +40,35 @@ export const FormSectionDescText = styled.p`
 `;
 
 // 예약 캘린더 //
+export const BookingCalendarWrapper = styled.div`
+  width: 80rem;
+  height: 50rem;
+  margin-bottom: 5rem;
+`;
+
+export const BookingCalendarTitle = styled.p`
+  ${({ title }) => {
+    if (title.includes("휴일")) {
+      return `${bgClosed()}`;
+    } else if (title.includes("마감")) {
+      return `${bgDisabled()}`;
+    } else {
+      return `${bgAvailable()}`;
+    }
+  }};
+  ${({ title }) => {
+    if (title.includes("휴일")) {
+      console.log(title);
+      return `${textClosed()}`;
+    } else if (title.includes("마감")) {
+      return `${textDisabled()}`;
+    } else {
+      return `${textPrimary()}`;
+    }
+  }};
+  ${caption1()}
+  padding: 0.3rem 0.8rem;
+`;
 
 // 예약 폼 //
 export const BookingFormContainer = styled.div`

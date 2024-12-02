@@ -42,8 +42,10 @@ export default function Booking() {
 
   return (
     <St.BookingContainer>
-      <St.BookingWrapper>
+      <St.BookingCalendarWrapper>
         <BookingCalendar onDateSelect={setSelectedDate} />
+      </St.BookingCalendarWrapper>
+      <St.BookingWrapper>
         <BookingForm
           personalInfoValues={personalInfo}
           onChangePersonalInfo={onChangePersonalInfo}

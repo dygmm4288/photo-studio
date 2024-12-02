@@ -1,3 +1,4 @@
+import * as St from "../../../booking/styles/BookingStyles";
 import FullCalendar from "@fullcalendar/react";
 import dayGridPlugin from "@fullcalendar/daygrid";
 import interactionPlugin from "@fullcalendar/interaction";
@@ -20,10 +21,16 @@ export default function BookingCalendar({ onDateSelect }) {
       plugins={[dayGridPlugin, interactionPlugin]}
       initialView="dayGridMonth"
       dateClick={handleSelectDate}
+      themeSystem="bootstrap5"
+      aspectRatio={2}
       events={events}
+      width={"100%"}
+      height={"100%"}
       eventContent={(eventInfo) => (
         <div>
-          <p>{eventInfo.event.title}</p>
+          <St.BookingCalendarTitle title={eventInfo.event.title}>
+            {eventInfo.event.title}
+          </St.BookingCalendarTitle>
         </div>
       )}
     />
