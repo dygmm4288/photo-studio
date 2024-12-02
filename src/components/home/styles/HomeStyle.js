@@ -100,6 +100,11 @@ export const ServiceSectionWrapper = styled.div`
   grid-template-columns: repeat(2, 1fr);
   grid-gap: 2rem;
   margin: 0 auto;
+
+  @media (max-width: 768px) {
+    grid-template-columns: repeat(1, 1fr);
+    padding: 0 2rem;
+  }
 `;
 
 export const GridItemWrapper = styled.div`
@@ -114,6 +119,12 @@ export const GridItemWrapper = styled.div`
   animation-play-state: ${(props) =>
     props.$startAnimation === true ? "running" : "paused"};
   animation-direction: alternate;
+
+  @media (max-width: 768px) {
+    &:first-child {
+      min-height: fit-content;
+    }
+  }
 `;
 
 export const GridItemWrapperBG = styled.div`
@@ -135,7 +146,7 @@ export const GridItemWrapperBG = styled.div`
     left: 0;
     width: 100%;
     height: 100%;
-    background: linear-gradient(135deg, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.4));
+    background: linear-gradient(135deg, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.1));
     z-index: 1; 
   }
 `
@@ -144,11 +155,21 @@ export const TypoSub = styled.span`
   font-size: 1.8rem;
   font-weight: 700;
   color: #6dc9de;
+  margin-bottom: 1rem;
+
+  @media (max-width: 768px) {
+    text-align: center;
+    margin-bottom: 1.3rem;
+  }
 `;
 
 export const InfoTitle = styled.span`
   font-size: 3.2rem;
   font-weight: 700;
+  @media (max-width: 768px) {
+    text-align: center;
+    ${heading1()}
+  }
 `;
 
 export const Seperator = styled.div`
@@ -188,7 +209,12 @@ export const ServiceDescription = styled.span`
   letter-spacing: -0.025rem;
   line-height: 3.9rem;
   white-space: pre-wrap;
-`;
+
+  @media (max-width: 768px) {
+    text-align: center;
+    ${heading3()}
+  }
+`
 
 export const ServiceTypo = styled.span`
   color: white;
@@ -209,6 +235,11 @@ export const InfoButton = styled.button`
   padding: 1.4rem;
   border: none;
   cursor: pointer;
+  
+  @media (max-width: 768px) {
+    margin: 0 auto;
+    min-width: 14rem;
+  }
 `;
 
 // Image Section
@@ -230,7 +261,13 @@ export const SectionTitle = styled.p`
 export const SectionDescription = styled.p`
   ${heading2({ bold: false })}
   margin-block-end: 2rem;
+  
+  @media (max-width: 768px) {
+    text-align: center;
+    ${heading3}
+  }
 `
+
 
 export const GridWithUnbalance = styled.div`
   display: grid;
@@ -296,6 +333,9 @@ export const ReviewText = styled.span`
   z-index: 1;
 `
 
+/**
+ * $left, $right 속성 추가
+ */
 export const CarouselButton = styled.button`
   ${bgAvailable};
   border: none;
@@ -304,6 +344,8 @@ export const CarouselButton = styled.button`
   cursor: pointer;
   position: absolute;
   top: 50%;
+  z-index: 2;
+  opacity: 0.8;
   ${(props) => {
     if (props.$left) {
       return css`
@@ -317,9 +359,6 @@ export const CarouselButton = styled.button`
       `
     }
   }}
-  
-  z-index: 2;
-  opacity: 0.8;
 
   &:hover {
     opacity: 1;
@@ -330,7 +369,21 @@ export const CarouselButton = styled.button`
 export const CarouselCardTextIcon = styled.img`
   position: absolute;
   z-index: 1;
-  left: 3%;
+  ${(props) => {
+    if (props.$left) {
+      return css`
+      left: 3%;
+    `
+    } else {
+      return css`
+      right: 3%;
+    `
+    }
+  }}
   top: 50%;
   transform: translateY(-50%);
+
+  @media (max-width: 768px) {
+
+  }
 `
