@@ -1,13 +1,30 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
+import { IoCloseSharp } from "react-icons/io5";
 import { omitObject } from "../../../lib/util";
 import useToast from "../../../store/toast/useToast";
+import * as St from "../styles/toast.styles";
+import ToastIcon from "./ToastIcon";
 
 const ToastItem = ({ toast }) => {
   const { removeToast } = useToast();
+  const [isExisting, setExisting] = useState(true);
+
+  const toastOptions = omitObject(toast, [
+    "id",
+    "autoClose",
+    "onClose",
+    "duration",
+  ]);
 
   const handleClose = () => {
-    removeToast(toast.id);
-    if (toast.onClose) toast.onClose();
+    setExisting(false);
+    let timer = setTimeout(() => {
+      removeToast(toast.id);
+      if (toast.onClose) {
+        toast.onClose();
+      }
+      clearTimeout(timer);
+    }, 300);
   };
 
   useEffect(() => {
@@ -25,19 +42,20 @@ const ToastItem = ({ toast }) => {
     };
   }, []);
 
-  if (toast.component)
-    return (
-      <toast.component
-        {...omitObject(toast, ["id", "autoClose", "onClose", "duration"])}
-      />
-    );
+  if (toast.component) return <toast.component {...toastOptions} />;
 
   return (
-    <div>
-      {toast.showCloseBtn && <button onClick={handleClose}>close</button>}
-      {toast.icon && <div>icon</div>}
-      {toast.message}
-    </div>
+    <St.ToastItemWrapper
+      className={isExisting ? "toast-enter" : "toast-exit"}
+      {...omitObject(toastOptions, "icon")}>
+      {toast.icon && <ToastIcon type={toast.type} />}
+      <St.ToastText>{toast.message}</St.ToastText>
+      {toast.showCloseBtn && (
+        <St.ToastCloseBtn onClick={handleClose}>
+          <IoCloseSharp size={"2.4rem"} />
+        </St.ToastCloseBtn>
+      )}
+    </St.ToastItemWrapper>
   );
 };
 

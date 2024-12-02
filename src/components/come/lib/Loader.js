@@ -14,7 +14,10 @@ class Loader {
   }
 
   setScript() {
-    if (this.script) return;
+    if (this.script) {
+      this.onLoad.apply(this);
+      return;
+    }
     const apiKey = import.meta.env.VITE_KAKAO_KEY;
     const url = `//dapi.kakao.com/v2/maps/sdk.js?appkey=${apiKey}&libraries=services,clusterer&autoload=false`;
     const script = document.createElement("script");

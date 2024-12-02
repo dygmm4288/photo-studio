@@ -1,8 +1,8 @@
 import { createBrowserRouter } from "react-router-dom";
+import Booking from "./components/booking";
 import ComePage from "./components/come/components/ComePage";
 import Home from "./components/home";
 import Layout from "./layouts";
-import Booking from "./components/booking";
 
 const router = createBrowserRouter([
   {
@@ -10,7 +10,7 @@ const router = createBrowserRouter([
     element: <Layout />,
     children: [
       {
-        path: "/",
+        path: "/come",
         element: <ComePage />,
       },
       {
@@ -20,6 +20,10 @@ const router = createBrowserRouter([
       {
         path: "/booking",
         element: <Booking />,
+      },
+      {
+        path: "gallery",
+        element: <div>갤러리</div>,
       },
     ],
   },

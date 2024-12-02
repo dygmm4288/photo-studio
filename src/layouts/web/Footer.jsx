@@ -1,6 +1,9 @@
 import CopyrightIcon from "../../assets/icons/CopyrightIcon";
+import {
+  footerInfos,
+  footerSNS,
+} from "../../components/layout/const/footer.const";
 import * as St from "../../components/layout/styles/footer.styles";
-import { footerInfos, footerSNS } from "./footer.const";
 const Footer = () => {
   return (
     <St.Footer>

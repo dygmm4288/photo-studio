@@ -1,6 +1,6 @@
 import styled from "styled-components";
-import { heading1 } from "../../../css/fonts.styles";
-import { columnBox } from "../../../css/layout.styles";
+import { heading1, heading3 } from "../../../css/fonts.styles";
+import { columnBox, rowBox } from "../../../css/layout.styles";
 
 export const ComeWrapper = styled.section`
   width: 100%;
@@ -13,18 +13,26 @@ export const ComeWrapper = styled.section`
 
 export const ComeHeading = styled.h1`
   ${heading1()}
+  text-align: center;
+`;
+
+export const ComeMainTextWrapper = styled.div`
+  margin: 0 auto;
+`;
+
+export const ComeMainText = styled.p`
+  ${heading3()}
+  ${rowBox()}
+  align-items: center;
+  justify-content: center;
+  ${(props) => props.hover && "text-decoration: underline;"};
+  ${(props) => props.pointer && "cursor: pointer;"};
 `;
 
 export const ComeMapWrapper = styled.div`
-  position: absolute;
-  left: 3rem;
-  top: 3.6rem;
-`;
-
-export const ComeMapForm = styled.form`
-  ${columnBox({ gap: 1.2 })}
-  padding: 2.5rem 4.1rem;
-  align-items: stretch;
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 8;
 `;
 
 export const ComeMapButtonWrapper = styled.div`
