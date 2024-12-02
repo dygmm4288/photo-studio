@@ -30,15 +30,14 @@ export default function useReviewSection(imageList) {
 
   const handleSlide = (direction) => {
     const delta = isMobile ? 1 : visibleCard;
-    
+
     setCurrentIndex((prev) => {
-        if (direction === "left") {
-          return prev === 0 ? imageList.length - delta : prev - 1;
-        } else {
-          return prev === imageList.length - delta ? 0 : prev + 1;
-        }
-      });
-    } 
+      if (direction === "left") {
+        return prev === 0 ? imageList.length - delta : prev - 1;
+      } else {
+        return prev === imageList.length - delta ? 0 : prev + 1;
+      }
+    });
   };
 
   const transform = -currentIndex * cardWidth;
