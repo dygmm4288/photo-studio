@@ -1,6 +1,7 @@
 import * as St from "../../styles/BookingStyles";
 import { db } from "../../../../lib/firebase";
 import { addDoc, collection } from "firebase/firestore";
+import Button from "../../../common/components/Button";
 
 export default function BookingConfirmationBar({
   selectedDate,
@@ -58,18 +59,18 @@ export default function BookingConfirmationBar({
       <St.BookingInfoWrapper>
         <div>
           <p>
-            {personalInfo.username
-              ? `${personalInfo.username} 님,`
-              : "______님,"}
-            선택하신 날짜는
             <St.BookingInfo>
-              {selectedDate ? selectedDate : "______"}
+              {personalInfo.username ? `${personalInfo.username}` : "______ "}
+            </St.BookingInfo>
+            님, 선택하신 날짜는
+            <St.BookingInfo>
+              {selectedDate ? selectedDate : " ______ "}
             </St.BookingInfo>
             이고, 선택하신 시간은
             <St.BookingInfo>
               {selectedTime.length > 0
                 ? selectedTime.sort().join(" ")
-                : "______"}
+                : " ______ "}
             </St.BookingInfo>
             입니다.
           </p>
@@ -79,7 +80,21 @@ export default function BookingConfirmationBar({
             <St.BookingInfo>{selectedOption?.product}</St.BookingInfo>입니다.
           </p>
         </div>
-        <St.BookingButton onClick={handleBooking}>예약하기</St.BookingButton>
+        <Button
+          onClick={handleBooking}
+          theme="secondary"
+          disabled={
+            !selectedDate ||
+            !selectedTime.length ||
+            !agreeImportantNotes ||
+            !personalInfo.email ||
+            !personalInfo.phone ||
+            !personalInfo.username ||
+            !selectedOption
+          }>
+          예약하기
+        </Button>
+        {/* <St.BookingButton onClick={handleBooking}>예약하기</St.BookingButton> */}
       </St.BookingInfoWrapper>
     </St.BookingConfirmationBarContainer>
   );
