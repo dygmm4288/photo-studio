@@ -17,7 +17,7 @@ export default function useReviewSection(imageList) {
 
         // viewport에 보이는 카드 수 계산 (현재 컨테이너 너비 / 카드 너비)
         setVisibleCard(
-          Math.floor(containerRef.current.offsetWidth / cardWidth)
+          Math.floor(containerRef.current.offsetWidth / cardWidth),
         );
       }
     };
@@ -30,15 +30,14 @@ export default function useReviewSection(imageList) {
 
   const handleSlide = (direction) => {
     const delta = isMobile ? 1 : visibleCard;
-    
+
     setCurrentIndex((prev) => {
-        if (direction === "left") {
-          return prev === 0 ? imageList.length - delta : prev - 1;
-        } else {
-          return prev === imageList.length - delta ? 0 : prev + 1;
-        }
-      });
-    } 
+      if (direction === "left") {
+        return prev === 0 ? imageList.length - delta : prev - 1;
+      } else {
+        return prev === imageList.length - delta ? 0 : prev + 1;
+      }
+    });
   };
 
   const transform = -currentIndex * cardWidth;
