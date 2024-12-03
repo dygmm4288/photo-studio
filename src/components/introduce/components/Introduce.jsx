@@ -1,5 +1,6 @@
 import * as St from "../styles/IntroduceStyle";
 import IntroduceSection1 from "./section1/IntroduceSection1";
+import IntroduceSection2 from "./section2/IntroduceSection2";
 import IntroduceSection3 from "./section3/IntroduceSection3";
 
 const Introduce = () => {
@@ -15,7 +16,7 @@ const Introduce = () => {
         </St.IntroduceHeaderText>
       </St.IntroduceHeader>
       <IntroduceSection1 />
-
+      <IntroduceSection2 />
       <IntroduceSection3 />
     </St.IntroduceWrapper>
   );
