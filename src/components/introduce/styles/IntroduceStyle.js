@@ -66,6 +66,8 @@ export const IntroduceSection1DetailWrapper = styled.div`
 export const IntroduceSection3Wrapper = styled.section`
   padding: 13.6rem;
   ${rowBox({ gap: 2 })}
+  justify-content: center;
+  align-items: center;
 `;
 
 export const IntroduceSection3LargeImageWrapper = styled.div`
