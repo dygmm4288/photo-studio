@@ -35,19 +35,24 @@ export const IntroduceHeaderText = styled.p`
 export const IntroduceSection1Wrapper = styled.section`
   padding: 13.6rem;
   ${rowBox({ gap: 4.4 })}
+
+  & > div {
+    flex: 1;
+  }
 `;
 
 export const IntroduceSection1ImageWrapper = styled.div`
   ${rowBox({ gap: 2.2 })}
   div {
+    flex: 1;
     ${columnBox({ gap: 4.1 })}
   }
   div:nth-child(2) {
     margin-top: 8.8rem;
   }
   img {
-    width: 29.8rem;
-    height: 40.9rem;
+    width: 100%;
+    min-height: 40.9rem;
     object-fit: contain;
   }
 `;
