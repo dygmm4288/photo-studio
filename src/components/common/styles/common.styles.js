@@ -141,3 +141,8 @@ export const FloatingText = styled.span`
   ${label1()}
   ${textWhite()}
 `;
+
+export const RadioLabel = styled.label`
+  width: 2.4rem;
+  height: 2.4rem;
+`;
