@@ -1,3 +1,4 @@
+import { motion } from "motion/react";
 import { useState } from "react";
 import * as St from "../../styles/IntroduceStyle";
 import { introduceImage, navItems } from "./const";
@@ -37,10 +38,13 @@ const IntroduceSection2 = () => {
         </St.IntroduceSection2OptionTextWrapper>
         <St.IntroduceSection2TextWrapper>
           {selectedNavItem.contents.map((content) => (
-            <div key={content.title}>
+            <motion.div
+              initial={{ opacity: 0, y: 100, msTransitionDuration: 500 }}
+              animate={{ opacity: 1, y: 0 }}
+              key={content.title}>
               <h3>{content.title}</h3>
               <span>{content.content}</span>
-            </div>
+            </motion.div>
           ))}
         </St.IntroduceSection2TextWrapper>
       </St.IntroduceSection2Footer>
