@@ -4,6 +4,7 @@ import ComePage from "./components/come/components/ComePage";
 import Home from "./components/home";
 import Introduce from "./components/introduce/components/Introduce";
 import Layout from "./layouts";
+import Gallery from "./components/gallery";
 
 const router = createBrowserRouter([
   {
@@ -25,6 +26,10 @@ const router = createBrowserRouter([
       {
         path: "introduce",
         element: <Introduce />,
+      },
+      {
+        path: "gallery",
+        element: <Gallery />,
       },
     ],
   },
