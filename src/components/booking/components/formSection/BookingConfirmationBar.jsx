@@ -2,6 +2,9 @@ import { addDoc, collection } from "firebase/firestore";
 import _ from "lodash";
 import { db } from "../../../../lib/firebase";
 import * as St from "../../styles/BookingStyles";
+import useToast from "../../../../store/toast/useToast";
+import { ToastPosition, ToastType } from "../../../../store/toast/toast.const";
+import { useNavigate } from "react-router";
 
 const NO_NAME = "______ ";
 
@@ -12,29 +15,84 @@ export default function BookingConfirmationBar({
   selectedTime,
   agreeImportantNotes,
 }) {
+  const { showToast } = useToast();
+  const navigate = useNavigate();
+
   const handleBooking = async () => {
-    // TODO: TOAST ALERT으로 변경
     if (!selectedDate) {
-      alert("날짜를 선택해주세요.");
+      showToast({
+        message: "날짜를 선택해주세요.",
+        type: ToastType.WARNING,
+        position: ToastPosition.TOP_RIGHT,
+        icon: true,
+        showCloseBtn: true,
+      });
       return;
     } else if (selectedOption && !selectedTime.length) {
-      alert("시간을 선택해주세요.");
+      showToast({
+        message: "시간을 선택해주세요.",
+        type: ToastType.WARNING,
+        position: ToastPosition.TOP_RIGHT,
+        icon: true,
+        showCloseBtn: true,
+      });
       return;
     } else if (!agreeImportantNotes) {
-      alert("중요 공지사항에 동의해주세요.");
+      showToast({
+        message: "중요 공지사항에 동의해주세요.",
+        type: ToastType.WARNING,
+        position: ToastPosition.TOP_RIGHT,
+        icon: true,
+        showCloseBtn: true,
+      });
       return;
     } else if (!personalInfo.email) {
-      alert("이메일을 입력해주세요.");
+      showToast({
+        message: "이메일을 입력해주세요.",
+        type: ToastType.WARNING,
+        position: ToastPosition.TOP_RIGHT,
+        icon: true,
+        showCloseBtn: true,
+      });
       return;
     } else if (!personalInfo.phone) {
-      alert("휴대폰 번호를 입력해주세요.");
+      showToast({
+        message: "휴대폰 번호를 입력해주세요.",
+        type: ToastType.WARNING,
+        position: ToastPosition.TOP_RIGHT,
+        icon: true,
+        showCloseBtn: true,
+      });
       return;
     } else if (!personalInfo.username) {
-      alert("이름을 입력해주세요.");
+      showToast({
+        message: "이름을 입력해주세요.",
+        type: ToastType.WARNING,
+        position: ToastPosition.TOP_RIGHT,
+        icon: true,
+        showCloseBtn: true,
+      });
       return;
     } else if (!selectedOption) {
-      alert("옵션을 선택해주세요.");
+      showToast({
+        message: "옵션을 선택해주세요.",
+        type: ToastType.WARNING,
+        position: ToastPosition.TOP_RIGHT,
+        icon: true,
+        showCloseBtn: true,
+      });
       return;
+    } else {
+      showToast({
+        message: "예약이 완료되었습니다.",
+        type: ToastType.SUCCESS,
+        position: ToastPosition.TOP_RIGHT,
+        icon: true,
+        showCloseBtn: true,
+      });
+      setTimeout(() => {
+        navigate("/");
+      }, 5000);
     }
 
     try {

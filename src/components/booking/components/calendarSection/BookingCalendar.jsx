@@ -21,11 +21,9 @@ export default function BookingCalendar({ onDateSelect }) {
       plugins={[dayGridPlugin, interactionPlugin]}
       initialView="dayGridMonth"
       dateClick={handleSelectDate}
-      themeSystem="bootstrap5"
-      aspectRatio={2}
       events={events}
-      width={"100%"}
-      height={"100%"}
+      width="100%"
+      height="100%"
       eventContent={(eventInfo) => (
         <div>
           <St.BookingCalendarTitle title={eventInfo.event.title}>

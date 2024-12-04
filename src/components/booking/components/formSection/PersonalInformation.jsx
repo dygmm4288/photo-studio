@@ -68,8 +68,6 @@ export default function PersonalInformation({
     }
   };
 
-  // TODO: Input 컴포넌트에 에러 메시지 전달?
-
   return (
     <St.FromSectionWrapper>
       <St.FormSectionDescText>
