@@ -50,6 +50,7 @@ export const IntroduceSection1ImageWrapper = styled.div`
   div:nth-child(2) {
     margin-top: 8.8rem;
   }
+
   img {
     width: 100%;
     min-height: 40.9rem;
@@ -80,6 +81,7 @@ export const IntroduceSection2Wrapper = styled.section`
 
   & > img {
     align-self: stretch;
+    max-height: 50rem;
     object-fit: contain;
   }
 `;
@@ -169,8 +171,6 @@ export const IntroduceSection2OptionTextWrapper = styled.div`
     }
   }
 `;
-
-export const IntroduceSection2OptionText = styled.div``;
 
 export const IntroduceSection3Wrapper = styled.section`
   padding: 13.6rem;
