@@ -1,4 +1,5 @@
 import { createGlobalStyle } from "styled-components";
+import { caption1, heading2, label1 } from "./fonts.styles";
 
 const GlobalStyle = createGlobalStyle`
   /* http://meyerweb.com/eric/tools/css/reset/ 
@@ -99,6 +100,28 @@ const GlobalStyle = createGlobalStyle`
     display: flex;
     justify-content: center;
   }
+
+  .fc-header-toolbar .fc-toolbar-title {
+    font-size: ${heading2};
+  }
+
+  .fc-toolbar-chunk {
+    margin-bottom: 1rem;
+  }
+
+  .fc-header-toolbar .fc-today-button {
+    font-size: ${label1};
+    text-transform: uppercase;
+    margin-right: 1rem;
+    padding: 0.7rem 1rem;
+    cursor: pointer;
+  }
+
+  .fc-header-toolbar .fc-prev-button,
+  .fc-header-toolbar .fc-next-button {
+    font-size: ${caption1};
+  }
+
 `;
 
 export default GlobalStyle;
