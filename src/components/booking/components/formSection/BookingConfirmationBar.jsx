@@ -1,22 +1,29 @@
-import { addDoc, collection } from "firebase/firestore";
-import _ from "lodash";
-import { db } from "../../../../lib/firebase";
 import * as St from "../../styles/BookingStyles";
+import _ from "lodash";
 import useToast from "../../../../store/toast/useToast";
+import { addDoc, collection } from "firebase/firestore";
+import { db } from "../../../../lib/firebase";
 import { ToastPosition, ToastType } from "../../../../store/toast/toast.const";
 import { useNavigate } from "react-router";
+import { useBookingStore } from "../../store/useBookingStore";
 
 const NO_NAME = "______ ";
 
-export default function BookingConfirmationBar({
-  selectedDate,
-  personalInfo,
-  selectedOption,
-  selectedTime,
-  agreeImportantNotes,
-}) {
+export default function BookingConfirmationBar() {
   const { showToast } = useToast();
   const navigate = useNavigate();
+  const {
+    personalInfo,
+    selectedDate,
+    selectedOption,
+    selectedTime,
+    agreeImportantNotes,
+    setPersonalInfo,
+    setSelectedDate,
+    setSelectedOption,
+    setSelectedTime,
+    setAgreeImportantNotes,
+  } = useBookingStore();
 
   const handleBooking = async () => {
     if (!selectedDate) {
@@ -82,7 +89,30 @@ export default function BookingConfirmationBar({
         showCloseBtn: true,
       });
       return;
-    } else {
+    }
+
+    try {
+      const bookingData = {
+        email: personalInfo.email,
+        username: personalInfo.username,
+        phone: personalInfo.phone,
+        product: {
+          name: selectedOption.product,
+          duration: selectedOption.duration,
+        },
+        booking: {
+          date: new Date(selectedDate),
+          times: selectedTime,
+        },
+      };
+
+      await addDoc(collection(db, "bookings"), bookingData);
+      setPersonalInfo({});
+      setSelectedDate("");
+      setSelectedOption("");
+      setSelectedTime([]);
+      setAgreeImportantNotes(false);
+
       showToast({
         message: "예약이 완료되었습니다.",
         type: ToastType.SUCCESS,
@@ -93,22 +123,6 @@ export default function BookingConfirmationBar({
       setTimeout(() => {
         navigate("/");
       }, 5000);
-    }
-
-    try {
-      const bookingData = {
-        email: personalInfo.email,
-        username: personalInfo.username,
-        phone: personalInfo.phone,
-        selectedProduct: {
-          name: selectedOption.product,
-          duration: selectedOption.duration,
-        },
-        selectedDate: new Date(selectedDate),
-        selectedTime: selectedTime,
-      };
-
-      await addDoc(collection(db, "booking"), bookingData);
     } catch (error) {
       console.error(error);
     }
@@ -116,9 +130,7 @@ export default function BookingConfirmationBar({
 
   const username = personalInfo.username || NO_NAME;
   const date = selectedDate || NO_NAME;
-  const times = _.isEmpty(selectedTime)
-    ? NO_NAME
-    : selectedTime.sort().join(", ");
+  const times = _.isEmpty(selectedTime) ? NO_NAME : selectedTime;
 
   return (
     <St.BookingConfirmationBarContainer>

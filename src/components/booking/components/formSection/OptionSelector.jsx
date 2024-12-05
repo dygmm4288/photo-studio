@@ -1,9 +1,11 @@
 import * as St from "../../../booking/styles/BookingStyles";
 import { availableOptions } from "../../data/availableOptions";
+import { useBookingStore } from "../../store/useBookingStore";
 
-export default function OptionSelector({ selectedOption, onChangeOption }) {
-  const handleToggleOption = (option) => {
-    onChangeOption(option);
+export default function OptionSelector() {
+  const { selectedOption, setSelectedOption } = useBookingStore();
+  const onChangeOptionSelector = (option) => {
+    setSelectedOption(option);
   };
 
   return (
@@ -22,7 +24,7 @@ export default function OptionSelector({ selectedOption, onChangeOption }) {
                   name={option.product}
                   value={option.product}
                   checked={selectedOption?.product === option.product}
-                  onChange={() => handleToggleOption(option)}
+                  onChange={() => onChangeOptionSelector(option)}
                 />
                 <label htmlFor={option.product}>{option.product}</label>
               </St.OptionCheckboxWrapper>

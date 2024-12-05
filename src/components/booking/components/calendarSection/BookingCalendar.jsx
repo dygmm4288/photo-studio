@@ -3,18 +3,20 @@ import FullCalendar from "@fullcalendar/react";
 import dayGridPlugin from "@fullcalendar/daygrid";
 import interactionPlugin from "@fullcalendar/interaction";
 import { useBookings } from "../../hooks/useBookings";
+import { useBookingStore } from "../../store/useBookingStore";
 
-export default function BookingCalendar({ onDateSelect }) {
+export default function BookingCalendar() {
+  const { setSelectedDate } = useBookingStore();
   const { bookings } = useBookings();
+
+  const handleSelectDate = (arg) => {
+    setSelectedDate(arg.dateStr);
+  };
 
   const events = bookings.map((booking) => ({
     title: booking.status,
     date: booking.date,
   }));
-
-  const handleSelectDate = (arg) => {
-    onDateSelect(arg.dateStr);
-  };
 
   return (
     <FullCalendar
@@ -25,11 +27,9 @@ export default function BookingCalendar({ onDateSelect }) {
       width="100%"
       height="100%"
       eventContent={(eventInfo) => (
-        <div>
-          <St.BookingCalendarTitle title={eventInfo.event.title}>
-            {eventInfo.event.title}
-          </St.BookingCalendarTitle>
-        </div>
+        <St.BookingCalendarTitle title={eventInfo.event.title}>
+          {eventInfo.event.title}
+        </St.BookingCalendarTitle>
       )}
     />
   );

@@ -1,50 +1,54 @@
 import { useState, useEffect } from "react";
-import { getDocs, collection } from "firebase/firestore";
+import { collection, getDocs } from "firebase/firestore";
+import { arrayToTimeObject, timeSlotsObject } from "../data/timeSlots";
 import { db } from "../../../lib/firebase";
-import { timeSlots } from "../data/timeSlots";
 
 export const useBookings = () => {
   const [bookings, setBookings] = useState([]);
 
-  const fetchBookings = async () => {
+  const getBookings = async () => {
     try {
-      const bookingCollection = await getDocs(collection(db, "booking"));
+      const bookingsCollection = await getDocs(collection(db, "bookings"));
 
-      // 예약된 날짜와 시간 그룹화
-      const bookingsByDate = bookingCollection.docs.reduce((acc, doc) => {
+      // 예약 날짜와 시간을 가져오는 함수
+      const bookingsByDate = bookingsCollection.docs.map((doc) => {
         const data = doc.data();
-        const bookingDate = data.selectedDate.toDate();
-        const bookingTime = data.selectedTime;
+        const bookingDate = data.booking.date.toDate(); // 예약 날짜 firebase Timestamp를 Date로 변환
+        const bookingTime = arrayToTimeObject(data.booking.times); // 예약 시간 배열을 객체로 변환
+        return {
+          date: bookingDate,
+          times: bookingTime,
+        };
+      });
 
-        if (!acc[bookingDate]) {
-          acc[bookingDate] = [];
-        }
+      // 예약 상태 여부를 확인해 주는 함수
+      const calcBookingStatus = (bookingByDate) => {
+        const totalTimeSlots = Object.entries(timeSlotsObject).length;
 
-        acc[bookingDate].push(...bookingTime);
-        return acc;
-      }, {});
+        return bookingByDate.map(({ date, times }) => {
+          const bookedCount = Object.keys(times).reduce((count, key) => {
+            return times[key] ? count + 1 : count;
+          }, 0);
 
-      const bookingStatus = Object.entries(bookingsByDate).map(
-        ([date, times]) => {
-          const remainingTimeSlots = timeSlots.length - times.length;
+          const remainingSlots = totalTimeSlots - bookedCount;
           return {
-            date: new Date(date),
-            status:
-              remainingTimeSlots <= 0 ? "마감" : `잔여 ${remainingTimeSlots}`,
+            date,
+            status: remainingSlots <= 0 ? "마감" : `잔여 ${remainingSlots}`,
             times,
           };
-        }
-      );
+        });
+      };
 
+      const bookingStatus = calcBookingStatus(bookingsByDate);
       setBookings(bookingStatus);
     } catch (error) {
-      console.log(error);
+      console.error(error.message);
     }
   };
 
   useEffect(() => {
-    fetchBookings();
+    getBookings();
   }, []);
 
-  return { bookings, fetchBookings };
+  return { bookings, getBookings };
 };

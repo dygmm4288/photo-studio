@@ -1,16 +1,13 @@
 import { importantNotes } from "../../data/importantNotes";
+import { useBookingStore } from "../../store/useBookingStore";
 import * as St from "../../styles/BookingStyles";
 import { IoIosCheckmark } from "react-icons/io";
 
-export default function ImportantNotes({
-  agreeImportantNotes,
-  onChangeAgreeImportantNotes,
-}) {
+export default function ImportantNotes() {
+  const { agreeImportantNotes, setAgreeImportantNotes } = useBookingStore();
   const onChangeAgreeImportantNotesHandler = (e) => {
-    onChangeAgreeImportantNotes(e.target.checked);
+    setAgreeImportantNotes(e.target.checked);
   };
-
-  console.log(agreeImportantNotes);
 
   return (
     <St.ImportantNoteContainer>
