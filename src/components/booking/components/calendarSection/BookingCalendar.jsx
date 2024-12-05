@@ -21,7 +21,9 @@ export default function BookingCalendar() {
   return (
     <FullCalendar
       plugins={[dayGridPlugin, interactionPlugin]}
+      eventBackgroundColor="red"
       initialView="dayGridMonth"
+      selectable={true}
       dateClick={handleSelectDate}
       events={events}
       width="100%"

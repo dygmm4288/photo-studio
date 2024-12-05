@@ -44,6 +44,11 @@ export const BookingCalendarWrapper = styled.div`
   width: 80rem;
   height: 50rem;
   margin-bottom: 5rem;
+
+  .selected-date {
+    background-color: #336155 !important;
+    color: white !important;
+  }
 `;
 
 export const BookingCalendarTitle = styled.p`
