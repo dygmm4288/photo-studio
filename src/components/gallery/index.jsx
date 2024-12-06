@@ -4,6 +4,8 @@ import * as CarouselSt from "../home/styles/HomeStyle";
 import * as St from "./styles/galleryStyle";
 import { FaCaretLeft, FaCaretRight } from "react-icons/fa";
 import { useState } from "react";
+import { useSetGlobalModalStore } from "../../store/useGlobalModal";
+import DetailModal from "./components/detailModal/DetailModal";
 
 const TABS = [
   { name: "제주감성", value: "jeju" },
@@ -16,10 +18,17 @@ const TABS = [
 export default function Gallery() {
   const { bgImage, containerRef, handleSlide, transform } =
     useCarousel(reviewWithImage);
+
+  const { setModal, onClose } = useSetGlobalModalStore();
+
   const [tab, setTab] = useState("jeju");
 
   const handleTab = (tabValue) => {
     setTab(tabValue);
+  };
+
+  const handleDetailModal = () => {
+    setModal("", <DetailModal />);
   };
 
   return (
@@ -62,6 +71,7 @@ export default function Gallery() {
         {reviewWithImage.map((img) => {
           return (
             <img
+              onClick={handleDetailModal}
               src={img.img}
               alt="section-image"
               key={img.img}

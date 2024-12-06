@@ -7,6 +7,7 @@ import RouterGuard from "./RouterGuard";
 import Footer from "./web/Footer";
 import Header from "./web/Header";
 import Main from "./web/Main";
+import GlobalModal from "../components/common/components/GlobalModal";
 
 const Layout = () => {
   useLayoutModeEffect();
@@ -14,6 +15,7 @@ const Layout = () => {
   return (
     <RouterGuard>
       <ToastContainer />
+      <GlobalModal />
       <Header />
       <Main>
         <Outlet />

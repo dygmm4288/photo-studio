@@ -19,9 +19,9 @@ export const GalleryTitle = styled.p`
 
 export const CarouselWrapper = styled.div`
   width: 100vw;
-  max-width: 100%;
   overflow: hidden;
   position: relative;
+  margin-left: auto;
 `
 
 export const TabWrapper = styled.div`
