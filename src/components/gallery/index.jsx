@@ -4,8 +4,8 @@ import * as CarouselSt from "../home/styles/HomeStyle";
 import * as St from "./styles/galleryStyle";
 import { FaCaretLeft, FaCaretRight } from "react-icons/fa";
 import { useState } from "react";
-import { useSetGlobalModalStore } from "../../store/useGlobalModal";
-import DetailModal from "./components/detailModal/DetailModal";
+import useModal from "../../store/useModal";
+import Modal from "../common/components/Modal";
 
 const TABS = [
   { name: "제주감성", value: "jeju" },
@@ -19,8 +19,6 @@ export default function Gallery() {
   const { bgImage, containerRef, handleSlide, transform } =
     useCarousel(reviewWithImage);
 
-  const { setModal, onClose } = useSetGlobalModalStore();
-
   const [tab, setTab] = useState("jeju");
 
   const handleTab = (tabValue) => {
@@ -28,7 +26,11 @@ export default function Gallery() {
   };
 
   const handleDetailModal = () => {
-    setModal("", <DetailModal />);
+    useModal.setState({
+      component: <Modal />,
+      isShow: true,
+    });
+    console.log(useModal.getState().isShow);
   };
 
   return (

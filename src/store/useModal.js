@@ -3,8 +3,8 @@ import { create } from "zustand";
 const useModal = create((set) => ({
   isShow: false,
   component: null,
-  show: () => set(() => ({ isOpen: true })),
-  hide: () => set(() => ({ isOpen: false })),
+  show: () => set(() => ({ isShow: true })),
+  hide: () => set(() => ({ isShow: false })),
 }));
 
 export default useModal;

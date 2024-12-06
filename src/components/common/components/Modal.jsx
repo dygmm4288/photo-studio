@@ -1,4 +1,5 @@
 import useModal from "../../../store/useModal";
+import * as Style from "../../common/styles/globalModal.styles";
 
 const Modal = () => {
   const { isShow, component } = useModal();
@@ -10,9 +11,11 @@ const Modal = () => {
   }
 
   return (
-    <div>
-      <component />
-    </div>
+    <Style.ModalWrapper $isShow={true}>
+      <Style.ModalBox $isShow={true}>
+        <Style.ContentWrapper>{component}</Style.ContentWrapper>
+      </Style.ModalBox>
+    </Style.ModalWrapper>
   );
 };
 
