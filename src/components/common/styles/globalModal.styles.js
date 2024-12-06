@@ -57,13 +57,13 @@ const ModalWrapper = styled.div`
   top: 0;
   left: 0;
   z-index: 99999999;
-  ${({ $isOpen }) => {
-    if ($isOpen) {
+  ${({ $isShow }) => {
+    if ($isShow) {
       return css`
         animation: ${WrapperFadeIn} 0.35s ease forwards;
       `;
     }
-    if (!$isOpen) {
+    if (!$isShow) {
       return css`
         animation: ${WrapperFadeOut} 0.35s ease forwards;
       `;
@@ -80,13 +80,13 @@ const ModalBackground = styled.div`
   background-color: black;
   opacity: 0.5;
   position: relative;
-  ${({ $isOpen }) => {
-    if ($isOpen) {
+  ${({ $isShow }) => {
+    if ($isShow) {
       return css`
         animation: ${BgFadeIn} 0.35s ease forwards;
       `;
     }
-    if (!$isOpen) {
+    if (!$isShow) {
       return css`
         animation: ${BgFadeOut} 0.35s ease forwards;
       `;
@@ -126,13 +126,13 @@ const ModalBox = styled.div`
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  ${({ $isOpen }) => {
-    if ($isOpen) {
+  ${({ $isShow }) => {
+    if ($isShow) {
       return css`
         animation: ${FadeIn} 0.35s ease forwards;
       `;
     }
-    if (!$isOpen) {
+    if (!$isShow) {
       return css`
         animation: ${FadeOut} 0.35s ease forwards;
       `;

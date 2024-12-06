@@ -11,8 +11,8 @@ const Modal = () => {
   }
 
   return (
-    <Style.ModalWrapper $isShow={true}>
-      <Style.ModalBox $isShow={true}>
+    <Style.ModalWrapper $isShow={isShow}>
+      <Style.ModalBox $isShow={isShow}>
         <Style.ContentWrapper>{component}</Style.ContentWrapper>
       </Style.ModalBox>
     </Style.ModalWrapper>
