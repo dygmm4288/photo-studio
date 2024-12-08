@@ -1,17 +1,17 @@
 import useModal from "../../../store/useModal";
 
 const Modal = () => {
-  const { isShow, component } = useModal();
+  const { isShow, Component } = useModal();
 
   if (!isShow) return null;
-  if (!component) {
+  if (!Component) {
     console.error("[Error Modal] : not defined component");
     return;
   }
 
   return (
     <div>
-      <component />
+      <Component />
     </div>
   );
 };
