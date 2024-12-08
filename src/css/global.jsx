@@ -86,6 +86,13 @@ const GlobalStyle = createGlobalStyle`
     --bgAvailable: #e0ffd9;
     --bgDisabled: #eee;
   }
+  #root {
+    position: relative;
+  }
+
+  .cursor-pointer {
+    cursor: pointer;
+  }
 
   /* FullCalendar */
   .fc-daygrid-day {
