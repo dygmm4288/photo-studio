@@ -12,7 +12,7 @@ import {
   textPrimary,
   textWhite,
 } from "../../../css/fonts.styles";
-import { flex, rowBox } from "../../../css/layout.styles";
+import { columnBox, flex, rowBox } from "../../../css/layout.styles";
 
 const primary = css`
   ${textWhite()}
@@ -145,4 +145,29 @@ export const FloatingText = styled.span`
 export const RadioLabel = styled.label`
   width: 2.4rem;
   height: 2.4rem;
+`;
+
+export const ModalWrapper = styled.div`
+  position: fixed;
+  inset: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  backdrop-filter: blur(10px);
+`;
+
+export const ModalBackground = styled.div`
+  border-radius: 3rem;
+  ${columnBox({ gap: 9 })}
+  background-color: var(--primary);
+  width: max-content;
+  height: max-content;
+
+  padding: 5.2rem 6.5rem;
+
+  header {
+    ${rowBox()}
+    justify-content: flex-end;
+    min-width: 30rem;
+  }
 `;
