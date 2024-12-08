@@ -21,9 +21,11 @@ const IntroduceSection2 = () => {
         {navItems.map((item, index) => (
           <div
             className={selected === index && "selected"}
-            onClick={() => setSelected(index)}
+            onClick={() => {
+              setSelected(index);
+            }}
             key={item.title}>
-            {item.title}
+            <p>{item.title}</p>
           </div>
         ))}
       </St.IntroduceSection2Nav>
