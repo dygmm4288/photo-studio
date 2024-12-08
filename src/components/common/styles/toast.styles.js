@@ -78,7 +78,7 @@ const toastTypeCss = (type) => css`
 `;
 
 export const ToastWrapper = styled.div`
-  position: absolute;
+  position: fixed;
   inset: 0;
 
   @keyframes fadeIn {

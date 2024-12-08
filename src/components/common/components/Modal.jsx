@@ -1,18 +1,47 @@
+import { useEffect } from "react";
+import { IoMdClose } from "react-icons/io";
 import useModal from "../../../store/useModal";
+import * as St from "../styles/common.styles";
 
 const Modal = () => {
-  const { isShow, component } = useModal();
+  const { isShow, Component, hide } = useModal();
 
-  if (!isShow) return null;
-  if (!component) {
+  const handleClickModalWrapper = (e) => {
+    if (e.currentTarget === e.target) hide();
+  };
+
+  const handleClickEscKey = (e) => {
+    if (isShow && e.code === "Escape") hide();
+  };
+
+  useEffect(() => {
+    window.addEventListener("keydown", handleClickEscKey);
+    return () => {
+      window.removeEventListener("keydown", handleClickEscKey);
+    };
+  }, [isShow]);
+
+  if (!isShow) {
+    return null;
+  }
+  if (!Component) {
     console.error("[Error Modal] : not defined component");
     return;
   }
 
   return (
-    <div>
-      <component />
-    </div>
+    <St.ModalWrapper onClick={handleClickModalWrapper}>
+      <St.ModalBackground>
+        <header>
+          <IoMdClose
+            className='cursor-pointer'
+            size={"2.4rem"}
+            onClick={() => hide()}
+          />
+        </header>
+        <Component />
+      </St.ModalBackground>
+    </St.ModalWrapper>
   );
 };
 
