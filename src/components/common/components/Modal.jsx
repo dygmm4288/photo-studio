@@ -1,7 +1,9 @@
+import { IoMdClose } from "react-icons/io";
 import useModal from "../../../store/useModal";
+import * as St from "../styles/common.styles";
 
 const Modal = () => {
-  const { isShow, Component } = useModal();
+  const { isShow, Component, hide } = useModal();
 
   if (!isShow) return null;
   if (!Component) {
@@ -10,9 +12,18 @@ const Modal = () => {
   }
 
   return (
-    <div>
-      <Component />
-    </div>
+    <St.ModalWrapper>
+      <St.ModalBackground>
+        <header>
+          <IoMdClose
+            className='cursor-pointer'
+            size={"2.4rem"}
+            onClick={() => hide()}
+          />
+        </header>
+        <Component />
+      </St.ModalBackground>
+    </St.ModalWrapper>
   );
 };
 
