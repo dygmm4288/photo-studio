@@ -101,6 +101,7 @@ const GlobalStyle = createGlobalStyle`
 
   .fc-daygrid-day-top{
     justify-content: center ;
+    margin-top: 0.5rem;
   }
 
   .fc-daygrid-day-events {
@@ -128,6 +129,19 @@ const GlobalStyle = createGlobalStyle`
   .fc-header-toolbar .fc-next-button {
     font-size: ${caption1};
   }
+
+  .fc-day-today .fc-daygrid-day-number {
+    background-color: var(--primary);
+    color: var(--white);
+    border-radius: 50%;
+    width: 2.5rem;
+    height: 2.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+
 
 `;
 

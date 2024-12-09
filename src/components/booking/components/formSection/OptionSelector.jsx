@@ -1,10 +1,12 @@
 import * as St from "../../../booking/styles/BookingStyles";
+import InputRadio from "../../../common/components/InputRadio";
 import { availableOptions } from "../../data/availableOptions";
 import { useBookingStore } from "../../store/useBookingStore";
 
 export default function OptionSelector() {
   const { selectedOption, setSelectedOption } = useBookingStore();
   const onChangeOptionSelector = (option) => {
+    // console.log(option);
     setSelectedOption(option);
   };
 
@@ -14,22 +16,26 @@ export default function OptionSelector() {
         원하시는 옵션을 선택해 주세요.
       </St.FormSectionDescText>
       {availableOptions.map((option) => {
+        console.log(selectedOption.product);
         return (
           <div key={option.product}>
-            <St.OptionCheckboxContainer>
+            <St.OptionRadioButtonContainer>
               <St.OptionCheckboxWrapper>
-                <input
-                  type="radio"
-                  id={option.product}
+                <InputRadio
                   name={option.product}
                   value={option.product}
+                  id={option.product}
                   checked={selectedOption?.product === option.product}
                   onChange={() => onChangeOptionSelector(option)}
                 />
-                <label htmlFor={option.product}>{option.product}</label>
+                <St.OptionRadioButtonLabel>
+                  {option.product}
+                </St.OptionRadioButtonLabel>
               </St.OptionCheckboxWrapper>
-              <span>{option.price}</span>
-            </St.OptionCheckboxContainer>
+              <St.OptionRadioButtonLabel>
+                {option.price}
+              </St.OptionRadioButtonLabel>
+            </St.OptionRadioButtonContainer>
             <St.OptionIncludesText>{option.includes}</St.OptionIncludesText>
           </div>
         );

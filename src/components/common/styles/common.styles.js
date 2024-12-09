@@ -145,6 +145,8 @@ export const FloatingText = styled.span`
 export const RadioLabel = styled.label`
   width: 2.4rem;
   height: 2.4rem;
+  ${rowBox()}
+  align-items: center;
 `;
 
 export const ModalWrapper = styled.div`
