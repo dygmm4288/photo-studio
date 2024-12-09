@@ -130,25 +130,31 @@ export default function BookingConfirmationBar() {
 
   const username = personalInfo.username || NO_NAME;
   const date = selectedDate || NO_NAME;
-  const times = _.isEmpty(selectedTime) ? NO_NAME : selectedTime;
+  const times = _.isEmpty(selectedTime)
+    ? NO_NAME
+    : `${selectedTime.join(" , ")}`;
+  const option = _.isEmpty(selectedOption?.product)
+    ? NO_NAME
+    : selectedOption?.product;
 
   return (
     <St.BookingConfirmationBarContainer>
       <St.BookingInfoWrapper>
         <div>
-          <p>
-            <St.BookingInfo>{username}</St.BookingInfo>
+          <St.BookingInfoText>
+            <St.BookingInfoAccent>{username}</St.BookingInfoAccent>
             님, 선택하신 날짜는
-            <St.BookingInfo>{date}</St.BookingInfo>
+            <St.BookingInfoAccent>{date}</St.BookingInfoAccent>
             이고, 선택하신 시간은
-            <St.BookingInfo>{times}</St.BookingInfo>
+            <St.BookingInfoAccent>{times}</St.BookingInfoAccent>
             입니다.
-          </p>
+          </St.BookingInfoText>
           <br />
-          <p>
+          <St.BookingInfoText>
             선택하신 옵션은
-            <St.BookingInfo>{selectedOption?.product}</St.BookingInfo>입니다.
-          </p>
+            <St.BookingInfoAccent>{option}</St.BookingInfoAccent>
+            입니다.
+          </St.BookingInfoText>
         </div>
         <St.BookingButton
           onClick={handleBooking}

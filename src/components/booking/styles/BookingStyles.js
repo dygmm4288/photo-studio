@@ -176,7 +176,12 @@ export const BookingInfoWrapper = styled.div`
   color: #ffffff;
 `;
 
-export const BookingInfo = styled.span`
+export const BookingInfoText = styled.p`
+  ${heading3()}
+`;
+
+export const BookingInfoAccent = styled.span`
+  ${heading3()}
   ${textAccent()}
 `;
 
