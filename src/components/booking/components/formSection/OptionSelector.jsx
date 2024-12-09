@@ -4,10 +4,11 @@ import { availableOptions } from "../../data/availableOptions";
 import { useBookingStore } from "../../store/useBookingStore";
 
 export default function OptionSelector() {
-  const { selectedOption, setSelectedOption } = useBookingStore();
+  const { selectedOption, setSelectedOption, setSelectedTime } =
+    useBookingStore();
   const onChangeOptionSelector = (option) => {
-    // console.log(option);
     setSelectedOption(option);
+    setSelectedTime([]);
   };
 
   return (

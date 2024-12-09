@@ -44,6 +44,12 @@ export default function BookingTimePicker() {
     getBookings();
   }, [selectedDate]);
 
+  // 사용자가 옵션을 변경했을 때, 선택된 시간 초기화
+  useEffect(() => {
+    setTimeSlots({ ...timeSlotsObject });
+    setSelectedTime([]);
+  }, [selectedOption]);
+
   const handleTimeSelect = (time) => {
     if (selectedTime.includes(time)) {
       // 이미 선택된 시간을 클릭한 경우 선택 해제

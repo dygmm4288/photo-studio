@@ -1,27 +1,27 @@
-import { useId, useState } from "react";
+import { useId } from "react";
 import * as St from "../styles/common.styles";
 
 const ButtonCheckbox = ({
   label,
   id,
   onChange,
+  checked = false,
   disabled = false,
   ...props
 }) => {
-  const [isSelected, setSelected] = useState(false);
   const defaultId = useId();
 
   const handleChange = (e) => {
     if (disabled) return;
-    setSelected(e.target.checked);
     if (onChange) onChange(e);
   };
 
   return (
-    <St.ButtonCheckboxWrapper selected={isSelected} disabled={disabled}>
+    <St.ButtonCheckboxWrapper selected={checked} disabled={disabled}>
       <St.ButtonCheckbox
         type="checkbox"
         id={id || defaultId}
+        checked={checked}
         onChange={handleChange}
         {...props}
       />
