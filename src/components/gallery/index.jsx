@@ -5,7 +5,7 @@ import * as St from "./styles/galleryStyle";
 import { FaCaretLeft, FaCaretRight } from "react-icons/fa";
 import { useState } from "react";
 import useModal from "../../store/useModal";
-import Modal from "../common/components/Modal";
+import DetailModal from "./components/detailModal/DetailModal";
 
 const TABS = [
   { name: "제주감성", value: "jeju" },
@@ -18,6 +18,7 @@ const TABS = [
 export default function Gallery() {
   const { bgImage, containerRef, handleSlide, transform } =
     useCarousel(reviewWithImage);
+  const { show, hide } = useModal();
 
   const [tab, setTab] = useState("jeju");
 
@@ -26,11 +27,7 @@ export default function Gallery() {
   };
 
   const handleDetailModal = () => {
-    useModal.setState({
-      component: <Modal />,
-      isShow: true,
-    });
-    console.log(useModal.getState().isShow);
+    show(<DetailModal onClose={hide} />);
   };
 
   return (
@@ -46,8 +43,9 @@ export default function Gallery() {
           </St.Tab>
         ))}
       </St.TabWrapper>
-      <St.SubTitle>제주 감성 스냅 촬영 고객의 후기</St.SubTitle>
       <St.CarouselWrapper style={{ marginBottom: "8.3rem" }}>
+        <St.SubTitle>제주 감성 스냅 촬영 고객의 후기</St.SubTitle>
+
         <CarouselSt.CarouselButton
           $left={true}
           onClick={() => handleSlide("left")}>

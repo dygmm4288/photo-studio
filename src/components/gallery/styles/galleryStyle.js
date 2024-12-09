@@ -2,7 +2,7 @@ import styled from "styled-components";
 import { heading1, heading2 } from "../../../css/fonts.styles";
 
 export const GalleryWrapper = styled.div`
-  width: 1000%;
+  width: 100%;
   min-height: calc(100vh);
   max-width: 144rem;
   margin-left: auto;
@@ -18,7 +18,7 @@ export const GalleryTitle = styled.p`
 `
 
 export const CarouselWrapper = styled.div`
-  width: 100vw;
+  width: 90vw;
   overflow: hidden;
   position: relative;
   margin-left: auto;
