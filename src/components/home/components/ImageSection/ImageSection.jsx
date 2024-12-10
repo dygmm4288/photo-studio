@@ -3,13 +3,13 @@ import { sectionImages } from "./const";
 import * as St from "../../styles/HomeStyle";
 import useResponsive from "../../hooks/useResponsive";
 import { FaCaretLeft, FaCaretRight } from "react-icons/fa";
-import useReviewSection from "../../hooks/useReviewSection";
+import useCarousel from "../../hooks/useCarousel";
 
 export default function ImageSection() {
   const [images, setImages] = useState([]);
   const { isMobile } = useResponsive();
   const { bgImage, transform, handleSlide, containerRef } =
-    useReviewSection(sectionImages);
+    useCarousel(sectionImages);
 
   useEffect(() => {
     if (images) {

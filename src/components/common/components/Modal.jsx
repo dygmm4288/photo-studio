@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import { IoMdClose } from "react-icons/io";
+// import { IoMdClose } from "react-icons/io";
 import useModal from "../../../store/useModal";
 import * as St from "../styles/common.styles";
 
@@ -30,18 +30,18 @@ const Modal = () => {
   }
 
   return (
-    <St.ModalWrapper onClick={handleClickModalWrapper}>
-      <St.ModalBackground>
+    <>
+      <St.ModalWrapper onClick={handleClickModalWrapper}>
         <header>
-          <IoMdClose
-            className='cursor-pointer'
+          {/* <IoMdClose
+            className="cursor-pointer"
             size={"2.4rem"}
             onClick={() => hide()}
-          />
+          /> */}
         </header>
-        <Component />
-      </St.ModalBackground>
-    </St.ModalWrapper>
+        {Component}
+      </St.ModalWrapper>
+    </>
   );
 };
 

@@ -1,4 +1,4 @@
-import useReviewSection from "../../hooks/useReviewSection";
+import useCarousel from "../../hooks/useCarousel";
 import ReviewIconLeft from "/assets/reviewIconLeft.png";
 import ReviewIconRight from "/assets/reviewIconRight.png";
 import { reviewWithImage } from "./const";
@@ -7,7 +7,7 @@ import * as St from "../../styles/HomeStyle";
 
 export default function ReviewCard() {
   const { bgImage, transform, handleSlide, containerRef } =
-    useReviewSection(reviewWithImage);
+    useCarousel(reviewWithImage);
 
   return (
     <St.CarouselWrapper>
