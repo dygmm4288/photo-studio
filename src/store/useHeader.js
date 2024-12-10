@@ -9,6 +9,8 @@ const useTouch = create((set) => ({
   untouch: () => set(() => ({ isTouched: false })),
 }));
 
+
+
 const touchCond = () => window.scrollY < 20;
 
 const useHeader = () => {
@@ -16,10 +18,14 @@ const useHeader = () => {
   const location = useLocation();
   const isHome = location.pathname.includes("home");
 
+
+
   const handleTouch = (isHome) => {
     if (isHome && touchCond()) touch();
     else untouch();
   };
+
+
 
   useEffect(() => {
     const handleScroll = debounce(() => {

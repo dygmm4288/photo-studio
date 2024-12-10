@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import useResponsive from "./useResponsive";
 
-export default function useReviewSection(imageList) {
+export default function useCarousel(imageList) {
   // 임시 이미지
   const [bgImage, setBgImage] = useState([]);
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -17,7 +17,7 @@ export default function useReviewSection(imageList) {
 
         // viewport에 보이는 카드 수 계산 (현재 컨테이너 너비 / 카드 너비)
         setVisibleCard(
-          Math.floor(containerRef.current.offsetWidth / cardWidth),
+          Math.floor(containerRef.current.offsetWidth / cardWidth)
         );
       }
     };

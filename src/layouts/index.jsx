@@ -12,13 +12,13 @@ const Layout = () => {
 
   return (
     <RouterGuard>
+      <Modal />
       <Header />
       <Main>
         <Outlet />
       </Main>
       <FloatingButton />
       <Footer />
-      <Modal />
     </RouterGuard>
   );
 };
