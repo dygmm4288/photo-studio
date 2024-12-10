@@ -8,6 +8,12 @@ import { useNavigate } from "react-router";
 import { useBookingStore } from "../../store/useBookingStore";
 
 const NO_NAME = "______ ";
+const TOAST_OPTIONS = {
+  type: ToastType.WARNING,
+  position: ToastPosition.TOP_RIGHT,
+  icon: true,
+  showCloseBtn: true,
+};
 
 export default function BookingConfirmationBar() {
   const { showToast } = useToast();
@@ -29,64 +35,43 @@ export default function BookingConfirmationBar() {
     if (!selectedDate) {
       showToast({
         message: "날짜를 선택해주세요.",
-        type: ToastType.WARNING,
-        position: ToastPosition.TOP_RIGHT,
-        icon: true,
-        showCloseBtn: true,
+        ...TOAST_OPTIONS,
       });
       return;
     } else if (selectedOption && !selectedTime.length) {
       showToast({
         message: "시간을 선택해주세요.",
-        type: ToastType.WARNING,
-        position: ToastPosition.TOP_RIGHT,
-        icon: true,
-        showCloseBtn: true,
+        ...TOAST_OPTIONS,
       });
       return;
     } else if (!agreeImportantNotes) {
       showToast({
         message: "중요 공지사항에 동의해주세요.",
-        type: ToastType.WARNING,
-        position: ToastPosition.TOP_RIGHT,
-        icon: true,
-        showCloseBtn: true,
+        ...TOAST_OPTIONS,
       });
       return;
     } else if (!personalInfo.email) {
       showToast({
         message: "이메일을 입력해주세요.",
-        type: ToastType.WARNING,
-        position: ToastPosition.TOP_RIGHT,
-        icon: true,
-        showCloseBtn: true,
+        ...TOAST_OPTIONS,
       });
       return;
     } else if (!personalInfo.phone) {
       showToast({
         message: "휴대폰 번호를 입력해주세요.",
-        type: ToastType.WARNING,
-        position: ToastPosition.TOP_RIGHT,
-        icon: true,
-        showCloseBtn: true,
+        ...TOAST_OPTIONS,
       });
       return;
     } else if (!personalInfo.username) {
       showToast({
         message: "이름을 입력해주세요.",
-        type: ToastType.WARNING,
-        position: ToastPosition.TOP_RIGHT,
-        icon: true,
-        showCloseBtn: true,
+        ...TOAST_OPTIONS,
       });
       return;
     } else if (!selectedOption) {
       showToast({
         message: "옵션을 선택해주세요.",
-        type: ToastType.WARNING,
-        position: ToastPosition.TOP_RIGHT,
-        icon: true,
-        showCloseBtn: true,
+        ...TOAST_OPTIONS,
       });
       return;
     }
