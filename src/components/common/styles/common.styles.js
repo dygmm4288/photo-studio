@@ -155,7 +155,8 @@ export const ModalWrapper = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  backdrop-filter: blur(10px);
+  backdrop-filter: blur(3px);
+  z-index: 99;
 `;
 
 export const ModalBackground = styled.div`

@@ -39,7 +39,7 @@ const Modal = () => {
             onClick={() => hide()}
           />
         </header>
-        <Component />
+      {Component}
       </St.ModalBackground>
     </St.ModalWrapper>
   );
