@@ -116,12 +116,12 @@ export const IntroduceSection2TextWrapper = styled.div`
 export const IntroduceSection2Nav = styled.nav`
   ${rowBox({ gap: 6.7 })}
   color: white;
-  font-size: 1.8rem;
-  line-height: 2.8rem;
-  letter-spacing: -0.025rem;
 
-  > * {
+  * {
     cursor: pointer;
+    font-size: 1.8rem;
+    line-height: 2.8rem;
+    letter-spacing: -0.025rem;
   }
 
   .selected {
