@@ -1,39 +1,78 @@
-import { addDoc, collection } from "firebase/firestore";
-import _ from "lodash";
-import { db } from "../../../../lib/firebase";
 import * as St from "../../styles/BookingStyles";
+import _ from "lodash";
+import useToast from "../../../../store/toast/useToast";
+import { addDoc, collection } from "firebase/firestore";
+import { db } from "../../../../lib/firebase";
+import { ToastPosition, ToastType } from "../../../../store/toast/toast.const";
+import { useNavigate } from "react-router";
+import { useBookingStore } from "../../store/useBookingStore";
 
 const NO_NAME = "______ ";
+const TOAST_OPTIONS = {
+  type: ToastType.WARNING,
+  position: ToastPosition.TOP_RIGHT,
+  icon: true,
+  showCloseBtn: true,
+};
 
-export default function BookingConfirmationBar({
-  selectedDate,
-  personalInfo,
-  selectedOption,
-  selectedTime,
-  agreeImportantNotes,
-}) {
+export default function BookingConfirmationBar() {
+  const { showToast } = useToast();
+  const navigate = useNavigate();
+  const {
+    personalInfo,
+    selectedDate,
+    selectedOption,
+    selectedTime,
+    agreeImportantNotes,
+    setPersonalInfo,
+    setSelectedDate,
+    setSelectedOption,
+    setSelectedTime,
+    setAgreeImportantNotes,
+  } = useBookingStore();
+
   const handleBooking = async () => {
-    // TODO: TOAST ALERT으로 변경
     if (!selectedDate) {
-      alert("날짜를 선택해주세요.");
+      showToast({
+        message: "날짜를 선택해주세요.",
+        ...TOAST_OPTIONS,
+      });
       return;
     } else if (selectedOption && !selectedTime.length) {
-      alert("시간을 선택해주세요.");
+      showToast({
+        message: "시간을 선택해주세요.",
+        ...TOAST_OPTIONS,
+      });
       return;
     } else if (!agreeImportantNotes) {
-      alert("중요 공지사항에 동의해주세요.");
+      showToast({
+        message: "중요 공지사항에 동의해주세요.",
+        ...TOAST_OPTIONS,
+      });
       return;
     } else if (!personalInfo.email) {
-      alert("이메일을 입력해주세요.");
+      showToast({
+        message: "이메일을 입력해주세요.",
+        ...TOAST_OPTIONS,
+      });
       return;
     } else if (!personalInfo.phone) {
-      alert("휴대폰 번호를 입력해주세요.");
+      showToast({
+        message: "휴대폰 번호를 입력해주세요.",
+        ...TOAST_OPTIONS,
+      });
       return;
     } else if (!personalInfo.username) {
-      alert("이름을 입력해주세요.");
+      showToast({
+        message: "이름을 입력해주세요.",
+        ...TOAST_OPTIONS,
+      });
       return;
     } else if (!selectedOption) {
-      alert("옵션을 선택해주세요.");
+      showToast({
+        message: "옵션을 선택해주세요.",
+        ...TOAST_OPTIONS,
+      });
       return;
     }
 
@@ -42,15 +81,33 @@ export default function BookingConfirmationBar({
         email: personalInfo.email,
         username: personalInfo.username,
         phone: personalInfo.phone,
-        selectedProduct: {
+        product: {
           name: selectedOption.product,
           duration: selectedOption.duration,
         },
-        selectedDate: new Date(selectedDate),
-        selectedTime: selectedTime,
+        booking: {
+          date: new Date(selectedDate),
+          times: selectedTime,
+        },
       };
 
-      await addDoc(collection(db, "booking"), bookingData);
+      await addDoc(collection(db, "bookings"), bookingData);
+      setPersonalInfo({});
+      setSelectedDate("");
+      setSelectedOption("");
+      setSelectedTime([]);
+      setAgreeImportantNotes(false);
+
+      showToast({
+        message: "예약이 완료되었습니다.",
+        type: ToastType.SUCCESS,
+        position: ToastPosition.TOP_RIGHT,
+        icon: true,
+        showCloseBtn: true,
+      });
+      setTimeout(() => {
+        navigate("/");
+      }, 5000);
     } catch (error) {
       console.error(error);
     }
@@ -60,25 +117,29 @@ export default function BookingConfirmationBar({
   const date = selectedDate || NO_NAME;
   const times = _.isEmpty(selectedTime)
     ? NO_NAME
-    : selectedTime.sort().join(", ");
+    : `${selectedTime.join(" , ")}`;
+  const option = _.isEmpty(selectedOption?.product)
+    ? NO_NAME
+    : selectedOption?.product;
 
   return (
     <St.BookingConfirmationBarContainer>
       <St.BookingInfoWrapper>
         <div>
-          <p>
-            <St.BookingInfo>{username}</St.BookingInfo>
+          <St.BookingInfoText>
+            <St.BookingInfoAccent>{username}</St.BookingInfoAccent>
             님, 선택하신 날짜는
-            <St.BookingInfo>{date}</St.BookingInfo>
+            <St.BookingInfoAccent>{date}</St.BookingInfoAccent>
             이고, 선택하신 시간은
-            <St.BookingInfo>{times}</St.BookingInfo>
+            <St.BookingInfoAccent>{times}</St.BookingInfoAccent>
             입니다.
-          </p>
+          </St.BookingInfoText>
           <br />
-          <p>
+          <St.BookingInfoText>
             선택하신 옵션은
-            <St.BookingInfo>{selectedOption?.product}</St.BookingInfo>입니다.
-          </p>
+            <St.BookingInfoAccent>{option}</St.BookingInfoAccent>
+            입니다.
+          </St.BookingInfoText>
         </div>
         <St.BookingButton
           onClick={handleBooking}

@@ -6,21 +6,23 @@ const iconValue = {
   color: "black",
 };
 
-const InputRadio = ({ name, value, id }) => {
-  const isSelected = name === value;
+const InputRadio = ({ name, value, id, onChange, checked }) => {
   return (
-    <St.RadioLabel htmlFor={id}>
-      {isSelected ? (
+    <St.RadioLabel htmlFor={name}>
+      {checked ? (
         <FaCheckSquare {...iconValue} />
       ) : (
         <FaRegSquare {...iconValue} />
       )}
+
       <input
         style={{ display: "none" }}
-        type='radio'
+        type="radio"
         value={value}
         id={id}
         name={name}
+        onChange={onChange}
+        checked={checked}
       />
     </St.RadioLabel>
   );
