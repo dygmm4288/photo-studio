@@ -78,9 +78,6 @@ const toastTypeCss = (type) => css`
 `;
 
 export const ToastWrapper = styled.div`
-  position: fixed;
-  inset: 0;
-
   @keyframes fadeIn {
     0% {
       opacity: 0;
@@ -113,10 +110,10 @@ export const ToastWrapper = styled.div`
 `;
 
 export const ToastListWrapper = styled.ul`
-  position: absolute;
+  position: fixed;
+  z-index: 99999;
   ${(props) => positionStyles(props.position)}
   ${columnBox({ gap: 1 })}
-  z-index: 500;
 `;
 export const ToastItemWrapper = styled.div`
   ${(props) => toastTypeCss(props.type)}
