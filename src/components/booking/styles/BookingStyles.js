@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import {
   bgAccent,
+  bgPrimary,
   bgTertiary,
   body1,
   body2,
@@ -154,9 +155,14 @@ export const BookingTimeSlotWrapper = styled.div`
   margin-bottom: 5rem;
 `;
 
+export const BookingTimeSlotInfoMessage = styled.p`
+  color: var(--closed);
+  ${caption1()}
+`;
+
 // 예약 확인 바 //
 export const BookingConfirmationBarContainer = styled.div`
-  background-color: #336155;
+  background-color: var(--primary);
   height: 20rem;
   position: sticky;
   bottom: 0;
@@ -173,7 +179,7 @@ export const BookingInfoWrapper = styled.div`
   flex: 1;
   justify-content: space-around;
   align-items: center;
-  color: #ffffff;
+  color: var(--white);
 `;
 
 export const BookingInfoText = styled.p`

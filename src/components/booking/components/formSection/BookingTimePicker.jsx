@@ -11,11 +11,7 @@ export default function BookingTimePicker() {
     useBookingStore();
   const maxTimeSlots = (selectedOption?.duration || 0) * 2;
   const [timeSlots, setTimeSlots] = useState({ ...timeSlotsObject });
-
-  // 선택된 시간을 저장하는 함수
-  const onChangeTimePicker = (time) => {
-    setSelectedTime(time);
-  };
+  const [infoMessage, setInfoMessage] = useState("");
 
   // 파이어베이스에서 선택한 날짜의 예약된 시간을 가져오는 함수
   const getBookedTimes = async (selectedDate) => {
@@ -33,10 +29,34 @@ export default function BookingTimePicker() {
     return arrayToTimeObject(bookings.map((data) => data.booking.times).flat());
   };
 
+  const handleTimeSelect = (time) => {
+    const startIndex = Object.keys(timeSlots).indexOf(time); // 선택한 시간의 인덱스
+    const endIndex = startIndex + maxTimeSlots; // 선택한 시간의 인덱스 + 최대 선택 가능 개수
+
+    const selectStartToEndTimes = Object.keys(timeSlots).slice(
+      startIndex,
+      endIndex
+    ); // 선택한 시간의 인덱스부터 최대 선택 가능 개수까지 시간 배열
+    const bookedTimes = selectStartToEndTimes.filter((t) => timeSlots[t]); // 이미 다른 사람이 예약한 시간의 배열
+
+    if (bookedTimes.length > 0) {
+      // e.g. 선택한 시간이 10:00이고, 최대 선택 가능 개수가 4개라면, 10:00 ~ 12:00 사이에 예약된 시간이 있는 경우
+      setInfoMessage(
+        `이미 예약된 시간이 있습니다. ${bookedTimes.join(
+          ", "
+        )}은 예약이 불가능 합니다.`
+      );
+    } else if (endIndex > Object.keys(timeSlots).length) {
+      setInfoMessage(`마감 30분 전에는 예약이 불가능 합니다.`);
+    } else {
+      setSelectedTime(selectStartToEndTimes);
+      setInfoMessage("");
+    }
+  };
+
   useEffect(() => {
     const getBookings = async () => {
       const bookedTimes = await getBookedTimes(selectedDate);
-
       const updatedTimeSlots = { ...timeSlotsObject, ...bookedTimes };
       setTimeSlots(updatedTimeSlots);
     };
@@ -44,26 +64,17 @@ export default function BookingTimePicker() {
     getBookings();
   }, [selectedDate]);
 
-  // 사용자가 옵션을 변경했을 때, 선택된 시간 초기화
   useEffect(() => {
-    setTimeSlots({ ...timeSlotsObject });
-    setSelectedTime([]);
+    setInfoMessage("");
   }, [selectedOption]);
-
-  const handleTimeSelect = (time) => {
-    if (selectedTime.includes(time)) {
-      // 이미 선택된 시간을 클릭한 경우 선택 해제
-      onChangeTimePicker(selectedTime.filter((t) => t !== time));
-    } else if (selectedTime.length < maxTimeSlots) {
-      // 새로운 시간을 선택해서 배열에 추가
-      onChangeTimePicker([...selectedTime, time]);
-    }
-  };
 
   return (
     <St.FromSectionWrapper>
       <St.FormSectionDescText>
         원하시는 시간을 선택해주세요
+        <St.BookingTimeSlotInfoMessage>
+          {infoMessage}
+        </St.BookingTimeSlotInfoMessage>
       </St.FormSectionDescText>
       <St.BookingTimeSlotWrapper>
         {Object.keys(timeSlots).map((time) => (
@@ -72,12 +83,7 @@ export default function BookingTimePicker() {
             label={time}
             value={time}
             checked={selectedTime.includes(time)}
-            disabled={
-              // 이미 예약된 시간이거나, 최대 선택 가능 개수를 초과한 경우 Disabled
-              timeSlots[time] ||
-              (selectedTime.length >= maxTimeSlots &&
-                !selectedTime.includes(time))
-            }
+            disabled={timeSlots[time]}
             onChange={() => handleTimeSelect(time)}
           />
         ))}

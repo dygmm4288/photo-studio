@@ -23,14 +23,34 @@ export const useBookings = () => {
 
       // 예약 상태 여부를 확인해 주는 함수
       const calcBookingStatus = (bookingByDate) => {
-        const totalTimeSlots = Object.entries(timeSlotsObject).length;
+        const totalBookingTimesByDate = bookingByDate.reduce(
+          (acc, { date, times }) => {
+            if (!acc[date]) {
+              acc[date] = {
+                date,
+                times: { ...times },
+              };
+            } else {
+              acc[date].times = { ...acc[date].times, ...times };
+            }
+            return acc;
+          },
+          {}
+        );
 
-        return bookingByDate.map(({ date, times }) => {
-          const bookedCount = Object.keys(times).reduce((count, key) => {
-            return times[key] ? count + 1 : count;
-          }, 0);
+        return Object.values(totalBookingTimesByDate).map(({ date, times }) => {
+          const totalTimeSlots = { ...timeSlotsObject };
 
-          const remainingSlots = totalTimeSlots - bookedCount;
+          Object.keys(times).forEach((time) => {
+            if (times[time]) {
+              totalTimeSlots[time] = true;
+            }
+          });
+
+          const remainingSlots = Object.values(totalTimeSlots).filter(
+            (value) => !value
+          ).length;
+
           return {
             date,
             status: remainingSlots <= 0 ? "마감" : `잔여 ${remainingSlots}`,
