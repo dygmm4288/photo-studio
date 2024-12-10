@@ -5,7 +5,7 @@ const Main = ({ children }) => {
   const location = useLocation();
   const isHome = location.pathname.includes("home");
 
-  return <MainWrapper isHome={isHome}>{children}</MainWrapper>;
+  return <MainWrapper $isHome={isHome}>{children}</MainWrapper>;
 };
 
 export default Main;

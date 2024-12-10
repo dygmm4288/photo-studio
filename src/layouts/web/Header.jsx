@@ -8,7 +8,7 @@ const Header = () => {
   const { isTouched } = useHeader();
   const location = useLocation();
   return (
-    <St.Header isTouched={isTouched}>
+    <St.Header $isTouched={isTouched}>
       <St.HeaderWrapper>
         <St.HeaderLogo>
           <Link to='/home'>포레스트 픽쳐스</Link>
@@ -18,7 +18,7 @@ const Header = () => {
             {navMenus.map((menu) => (
               <St.NavItem
                 key={`menu${menu.name}`}
-                isActive={location.pathname === menu.href}>
+                $isActive={location.pathname === menu.href}>
                 <Link to={menu.href}>{menu.name}</Link>
               </St.NavItem>
             ))}

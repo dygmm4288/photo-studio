@@ -17,10 +17,10 @@ export const Header = styled.header`
   padding: 3rem 0;
   width: 100vw;
   background-color: unset;
-  ${(props) => !props.isTouched && bgBlack()};
+  ${(props) => !props.$isTouched && bgBlack()};
   transition: backdrop-filter, background-color 0.5s ease;
   backdrop-filter: blur(0px);
-  ${(props) => props.isTouched && "backdrop-filter: blur(5px)"};
+  ${(props) => props.$isTouched && "backdrop-filter: blur(5px)"};
 `;
 
 export const HeaderWrapper = styled.div`
@@ -67,7 +67,7 @@ export const NavItem = styled.li`
   }
 
   ${(props) =>
-    props.isActive &&
+    props.$isActive &&
     `
     ${textPrimary()}
     ::before {

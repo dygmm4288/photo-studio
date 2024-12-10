@@ -20,7 +20,7 @@ const IntroduceSection2 = () => {
       <St.IntroduceSection2Nav>
         {navItems.map((item, index) => (
           <div
-            className={selected === index && "selected"}
+            className={selected === index ? "selected" : undefined}
             onClick={() => {
               setSelected(index);
             }}
