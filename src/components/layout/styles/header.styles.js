@@ -18,10 +18,10 @@ export const Header = styled.header`
   z-index: 20;
   padding: 3rem 12rem;
   background-color: unset;
-  ${(props) => !props.isTouched && bgBlack()};
+  ${(props) => !props.$isTouched && bgBlack()};
   transition: backdrop-filter, background-color 0.5s ease;
   backdrop-filter: blur(0px);
-  ${(props) => props.isTouched && "backdrop-filter: blur(5px)"};
+  ${(props) => props.$isTouched && "backdrop-filter: blur(5px)"};
 
   @media screen and (max-width: 768px) {
     background-color: #336155;
@@ -78,7 +78,7 @@ export const NavItem = styled.li`
   }
 
   ${(props) =>
-    props.isActive &&
+    props.$isActive &&
     `
     ${textPrimary()}
     ::before {

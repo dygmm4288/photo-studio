@@ -29,7 +29,7 @@ const Header = () => {
   };
 
   return (
-    <St.Header isTouched={isTouched}>
+    <St.Header $isTouched={isTouched}>
       {isMobile && (
         <St.SideMenuWrapper $isOpen={isOpen}>
           <St.SideMenuList>
@@ -59,36 +59,36 @@ const Header = () => {
         <St.HeaderLogo>
           <Link to="/home">포레스트 픽처스</Link>
         </St.HeaderLogo>
-        {isMobile ? (
-          isOpen ? (
-            <FaX
-              size={24}
-              color="#fff"
-              cursor="pointer"
-              onClick={handleSideBarToggle}
-            />
+          {isMobile ? (
+            isOpen ? (
+              <FaX
+                size={24}
+                color="#fff"
+                cursor="pointer"
+                onClick={handleSideBarToggle}
+              />
+            ) : (
+              <FaBars
+                size={28}
+                color="#fff"
+                cursor="pointer"
+                onClick={handleSideBarToggle}
+              />
+            )
           ) : (
-            <FaBars
-              size={28}
-              color="#fff"
-              cursor="pointer"
-              onClick={handleSideBarToggle}
-            />
-          )
-        ) : (
-          <St.NavWrapper>
-            <St.NavList as={"ul"}>
-              {navMenus.map((menu) => (
-                <St.NavItem
-                  key={`menu${menu.name}`}
-                  isActive={location.pathname === menu.href}>
-                  <Link to={menu.href}>{menu.name}</Link>
-                </St.NavItem>
-              ))}
-              <Button>문의하기</Button>
-            </St.NavList>
-          </St.NavWrapper>
-        )}
+            <St.NavWrapper>
+              <St.NavList as={"ul"}>
+                {navMenus.map((menu) => (
+                  <St.NavItem
+                    key={`menu${menu.name}`}
+                    isActive={location.pathname === menu.href}>
+                    <Link to={menu.href}>{menu.name}</Link>
+                  </St.NavItem>
+                ))}
+                <Button>문의하기</Button>
+              </St.NavList>
+            </St.NavWrapper>
+          )}
       </St.HeaderWrapper>
     </St.Header>
   );

@@ -5,8 +5,8 @@ import ToastItem from "./ToastItem";
 
 const ToastContainer = () => {
   const { toasts } = useToast();
-
   const groupedToasts = _.groupBy(toasts, "position");
+
   return (
     <St.ToastWrapper>
       {_.map(groupedToasts, (groupedToast, key) => {
