@@ -13,6 +13,6 @@ export const navMenus = [
   },
   {
     name: "문의하기",
-    href: "/",
+    href: "/help",
   },
 ];
