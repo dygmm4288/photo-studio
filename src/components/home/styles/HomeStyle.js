@@ -1,5 +1,10 @@
 import styled, { css, keyframes } from "styled-components";
-import { bgAvailable, heading1, heading2, heading3 } from "../../../css/fonts.styles";
+import {
+  bgAvailable,
+  heading1,
+  heading2,
+  heading3,
+} from "../../../css/fonts.styles";
 import { columnBox, rowBox } from "../../../css/layout.styles";
 
 export const FadeInWithMoveUp = keyframes`
@@ -62,7 +67,7 @@ export const MainBG = styled.div`
   ${columnBox({ gap: 1 })}
   justify-content: center;
   align-items: center;
-  animation: ${(props) => props.$fadeOut ? FadeOut : FadeIn} 1s ease;
+  animation: ${(props) => (props.$fadeOut ? FadeOut : FadeIn)} 1s ease;
   animation-fill-mode: forwards;
 `;
 
@@ -89,8 +94,6 @@ export const SubText = styled.span`
   ${heading2({ bold: false })}
 `;
 
-
-
 // Service Section
 export const ServiceSectionWrapper = styled.div`
   width: 100%;
@@ -115,6 +118,7 @@ export const GridItemWrapper = styled.div`
   ${columnBox({ gap: 0 })}
   position: relative;
   letter-spacing: -0.05rem;
+  justify-content: center;
   animation: ${FadeInWithMoveUp} 1s ease backwards;
   animation-play-state: ${(props) =>
     props.$startAnimation === true ? "running" : "paused"};
@@ -135,9 +139,9 @@ export const GridItemWrapperBG = styled.div`
   left: 0;
   z-index: -1;
   background-image: ${(props) => `url(${props.bg})`};
-  background-position:center;
-  background-repeat:no-repeat;
-  background-size:cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
 
   &::after {
     content: "";
@@ -147,9 +151,9 @@ export const GridItemWrapperBG = styled.div`
     width: 100%;
     height: 100%;
     background: linear-gradient(135deg, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.1));
-    z-index: 1; 
+    z-index: 1;
   }
-`
+`;
 
 export const TypoSub = styled.span`
   font-size: 1.8rem;
@@ -195,7 +199,7 @@ export const InfoNumber = styled.span`
   &::before {
     content: "";
     width: 2.4rem;
-    height: .2rem;
+    height: 0.2rem;
     background-color: #fff;
     position: absolute;
     left: 0;
@@ -214,7 +218,7 @@ export const ServiceDescription = styled.span`
     text-align: center;
     ${heading3()}
   }
-`
+`;
 
 export const ServiceTypo = styled.span`
   color: white;
@@ -227,7 +231,7 @@ export const ServiceTypo = styled.span`
 export const InfoButton = styled.button`
   width: fit-content;
   min-width: 9rem;
-  border-radius: .5rem;
+  border-radius: 0.5rem;
   color: white;
   background-color: #336155;
   font-size: 1.2rem;
@@ -235,7 +239,7 @@ export const InfoButton = styled.button`
   padding: 1.4rem;
   border: none;
   cursor: pointer;
-  
+
   @media (max-width: 768px) {
     margin: 0 auto;
     min-width: 14rem;
@@ -251,23 +255,22 @@ export const SectionWrapper = styled.div`
   justify-content: center;
   align-items: center;
   margin: 0 auto;
-`
+`;
 
 export const SectionTitle = styled.p`
   ${heading1({ bold: true })}
   margin-block-end: .6rem;
-`
+`;
 
 export const SectionDescription = styled.p`
   ${heading2({ bold: false })}
   margin-block-end: 2rem;
-  
+
   @media (max-width: 768px) {
     text-align: center;
     ${heading3}
   }
-`
-
+`;
 
 export const GridWithUnbalance = styled.div`
   display: grid;
@@ -276,24 +279,23 @@ export const GridWithUnbalance = styled.div`
   grid-gap: 2rem;
 
   & > *:nth-child(3n-1) {
-    margin-top: 4rem;  
+    margin-top: 4rem;
   }
-`
+`;
 
 // carousel
 export const CarouselWrapper = styled.div`
   width: 100vw;
   overflow: hidden;
   position: relative;
-`
+`;
 
 export const CarouselContainer = styled.div`
   ${rowBox({ gap: 2 })}
   width: 100%;
   transform: ${(props) => `translateX(${props.$transform}px)`};
   transition: all 1s ease;
-`
-
+`;
 
 // Review Card
 export const CardWrapper = styled.div`
@@ -301,7 +303,7 @@ export const CardWrapper = styled.div`
   min-width: 36rem;
   min-height: 36rem;
   background-color: #fff;
-  background-image: url(${props => props.$imageSrc});
+  background-image: url(${(props) => props.$imageSrc});
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
@@ -309,7 +311,7 @@ export const CardWrapper = styled.div`
   ${columnBox({ gap: 1 })}
 
   &::after {
-    content: '';
+    content: "";
     position: absolute;
     top: 0;
     left: 0;
@@ -318,7 +320,7 @@ export const CardWrapper = styled.div`
     background: linear-gradient(135deg, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.4));
     z-index: 0;
   }
-`
+`;
 
 export const ReviewText = styled.span`
   min-width: 70%;
@@ -331,7 +333,7 @@ export const ReviewText = styled.span`
   left: 50%;
   transform: translate(-50%, -50%);
   z-index: 1;
-`
+`;
 
 /**
  * $left, $right 속성 추가
@@ -340,7 +342,7 @@ export const CarouselButton = styled.button`
   ${bgAvailable};
   border: none;
   padding: 1rem;
-  border-radius: .5rem;
+  border-radius: 0.5rem;
   cursor: pointer;
   position: absolute;
   top: 50%;
@@ -351,19 +353,19 @@ export const CarouselButton = styled.button`
       return css`
         left: 1rem;
         transform: translateY(-50%);
-      `
+      `;
     } else {
       return css`
         right: 1rem;
         transform: translateY(-50%);
-      `
+      `;
     }
   }}
 
   &:hover {
     opacity: 1;
   }
-`
+`;
 
 // carousel card
 export const CarouselCardTextIcon = styled.img`
@@ -372,18 +374,17 @@ export const CarouselCardTextIcon = styled.img`
   ${(props) => {
     if (props.$left) {
       return css`
-      left: 3%;
-    `
+        left: 3%;
+      `;
     } else {
       return css`
-      right: 3%;
-    `
+        right: 3%;
+      `;
     }
   }}
   top: 50%;
   transform: translateY(-50%);
 
   @media (max-width: 768px) {
-
   }
-`
+`;
