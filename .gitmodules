@@ -1,0 +1,3 @@
+[submodule "supabse_login"]
+    path = supabase_login 
+    url = https://github.com/dygmm4288/supabase_login.git 
